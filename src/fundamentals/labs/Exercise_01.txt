@@ -22,3 +22,37 @@ Example Output (pwd):
     1. Cadens-MacBook-Pro:CodingNomads cadenmackenzie$ pwd
        /Users/cadenmackenzie/Documents/CodingNomads
 
+/Users/nataliewerve/Documents/CodingNomads
+Natalies-MacBook-Pro:CodingNomads nataliewerve$ mkdir Terminal_testing
+Natalies-MacBook-Pro:CodingNomads nataliewerve$ ls
+HelloWorld.class	HelloWorld_3.class	projects
+HelloWorld.java		HelloWorld_3.java	resources
+HelloWorld_2.class	Terminal_testing
+HelloWorld_2.java	labs
+Natalies-MacBook-Pro:CodingNomads nataliewerve$ touch test_1.txt test_2.txt test_3.txt
+Natalies-MacBook-Pro:CodingNomads nataliewerve$ ls
+HelloWorld.class	HelloWorld_3.java	test_1.txt
+HelloWorld.java		Terminal_testing	test_2.txt
+HelloWorld_2.class	labs			test_3.txt
+HelloWorld_2.java	projects
+HelloWorld_3.class	resources
+Natalies-MacBook-Pro:CodingNomads nataliewerve$ mv test_1.txt test_2.txt test_3.txt Terminal_testing/
+Natalies-MacBook-Pro:CodingNomads nataliewerve$ cd Terminal_testing/
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ ls
+test_1.txt	test_2.txt	test_3.txt
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ mkdir More_testing
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ mv test_1.txt More_testing/
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ cp test_2.txt More_testing/
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ rm test_2.txt
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ rm More_testing/
+rm: More_testing/: is a directory
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ rm -r More_testing/
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ pwd
+/Users/nataliewerve/Documents/CodingNomads/Terminal_testing
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ ls
+test_3.txt
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ vim test_3.txt
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ cat test_3.txt
+Terminal testing text
+Natalies-MacBook-Pro:Terminal_testing nataliewerve$ grep "testing" test_3.txt
+Terminal testing text
