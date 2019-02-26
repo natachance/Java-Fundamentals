@@ -17,10 +17,14 @@ Initializing git folder
             iii. Commit file(s)
             iv.  Push file(s) to Github repository
 
+https://github.com/natachance/git_practice
+
 Adding a remote
     1. Create new personal repository on Github named "online_java-labs".
     2. On local machine, add the new remote address (directions are provided on Github with new repo is created)
     3. Push local git repository to your Github using the new remote.
+
+https://github.com/natachance/online_java_labs
 
 Cloning repository from Github
     1. Find a repository on Github
@@ -28,3 +32,5 @@ Cloning repository from Github
     3. Create new repository on Github
     4. Add new remote on local machine
     5. Push to new Github repository
+
+https://github.com/natachance/cloning_practice
