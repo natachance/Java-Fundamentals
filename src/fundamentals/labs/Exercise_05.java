@@ -22,11 +22,10 @@ public class Exercise_05 {
         System.out.print("Enter a number in days between 1 and 1,000,000,000: ");
         // assign input to variable as int
         int days = scanner.nextInt();
-
-        // write completed code here
-
-
-        // testing change 2
+        // 86400 seconds in one day
+        int seconds = days * 86400;
+        // calculate total number of seconds in the number of days entered by user
+        System.out.println("There are " + seconds + " seconds in " + days + " days.");
 
     }
 }
