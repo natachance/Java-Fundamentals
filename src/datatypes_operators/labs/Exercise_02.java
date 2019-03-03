@@ -24,6 +24,14 @@ public class Exercise_02 {
     public static void main(String[] args) {
 
         // write code here
+        int red = 10;
+        double blue = red;
+        System.out.println(blue);
+
+        double purple = 10.5;
+        int green = (int) purple;
+        System.out.println(green);
+
 
     }
 }

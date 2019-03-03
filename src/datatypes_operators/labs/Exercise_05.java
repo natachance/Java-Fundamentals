@@ -19,6 +19,42 @@ class LogicalOperators {
 
         // write your code below
 
+        boolean red = true;
+        boolean blue = false;
+
+        if (red & blue) {
+            System.out.println("red and blue");
+        }
+        else {
+            System.out.println("false");
+        }
+
+        if (red && blue) {
+            System.out.println("if red, then red and blue");
+        }
+        else {
+            System.out.println("false");
+        }
+
+        if (red | blue) {
+            System.out.println("red or blue or both");
+        }
+
+        if (red || blue) {
+            System.out.println("if red, then red or blue or both");
+        }
+
+        if (red ^ blue) {
+            System.out.println("red or blue, but not both");
+        }
+
+        if (!red) {
+            System.out.println("not red");
+        }
+        else {
+            System.out.println("red");
+        }
+
     }
 
 }

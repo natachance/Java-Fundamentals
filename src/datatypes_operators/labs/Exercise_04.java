@@ -18,6 +18,35 @@ class RelationalOperators {
         }
 
         // write your code below
+        int red = 10;
+        int blue = 20;
+
+        if (red > blue) {
+            System.out.println("red is greater than blue");
+        }
+        else {
+                System.out.println("false");
+        }
+
+        if (blue >= red) {
+            System.out.println("blue is greater than or equal to red");
+        }
+
+        if (red < blue) {
+            System.out.println("red is less than blue");
+        }
+
+        if (red <= blue) {
+            System.out.println("red is less than or equal to blue");
+        }
+
+        if (red == blue) {
+            System.out.println("red equals blue");
+        }
+        else {
+            System.out.println("false");
+        }
+
 
     }
 
