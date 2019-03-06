@@ -26,7 +26,5 @@ public class Exercise_04 {
         volume = Math.PI * Math.pow(radius, 2) * height; // calculate volume of cylinder
 
         System.out.println("The volume of a cylinder with a radius of " + radius + " and height of " + height + " equals " + volume + ".");
-
-
     }
 }

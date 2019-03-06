@@ -31,7 +31,5 @@ public class Exercise_02 {
         double purple = 10.5;
         int green = (int) purple;
         System.out.println(green);
-
-
     }
 }
