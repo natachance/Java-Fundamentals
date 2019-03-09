@@ -8,4 +8,18 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_06 {
+    public static void main(String[] args){
+
+        int lowerNumber = 1;
+        int upperNumber = 100;
+        int sum = 0;
+
+        do{sum += lowerNumber;
+        lowerNumber++;
+        } while (lowerNumber <= upperNumber);
+
+        System.out.println("The sum of all numbers from 1 to 100 is " + sum);
+
+    }
+
 }
