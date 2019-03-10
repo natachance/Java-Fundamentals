@@ -13,15 +13,20 @@ import java.util.Scanner;
 public class Exercise_07 {
     public static void main(String[] args) {
 
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("Please enter a word: ");
-//
-//        String word = scanner.nextLine();
-//
-//        do {
-//
-//        } while ();
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Please enter a word (using all lowercase letters): ");
+
+        String word = scanner.nextLine();
+
+        char letter = 'b';
+        int letterNumber = 0;
+
+       while (letter != 'a' && letter != 'e' && letter != 'i' && letter != 'o' && letter != 'u') {
+           letter = word.charAt(letterNumber);
+           letterNumber++;
+        }
+
+       System.out.println("The first vowel in " + word + " is " + letter);
     }
 }

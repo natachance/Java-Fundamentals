@@ -20,4 +20,17 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_11 {
+    public static void main(String[] args){
+
+        int result;
+
+        for(int down = 1; down <= 10; down++){
+
+            for(int across = 1; across <=10; across++) {
+                result = across * down;
+                System.out.print(result + " | ");
+            }
+            System.out.println();
+        }
+    }
 }
