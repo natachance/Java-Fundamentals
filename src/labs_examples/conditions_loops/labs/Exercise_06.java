@@ -14,12 +14,11 @@ public class Exercise_06 {
         int upperNumber = 100;
         int sum = 0;
 
-        do{sum += lowerNumber;
-        lowerNumber++;
+        do{
+            sum += lowerNumber;
+            lowerNumber++;
         } while (lowerNumber <= upperNumber);
 
         System.out.println("The sum of all numbers from 1 to 100 is " + sum);
-
     }
-
 }

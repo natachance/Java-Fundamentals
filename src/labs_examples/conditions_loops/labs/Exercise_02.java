@@ -16,12 +16,15 @@ public class Exercise_02 {
 
         // 1) create scanner
         Scanner scanner = new Scanner(System.in);
+
         // 2) prompt user
         System.out.println("Enter a number: ");
+
         // 3) assign input to variable as int
         int number = scanner.nextInt();
+
         // 4) write completed code here
-        if(number > 0 && number <8){
+        if(number > 0 && number < 8){
             if(number == 1){
                 System.out.println("Monday");
             } else if(number == 2){
@@ -40,6 +43,5 @@ public class Exercise_02 {
         } else{
             System.out.println("Other");
         }
-
     }
 }

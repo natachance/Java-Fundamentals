@@ -19,7 +19,13 @@ public class Exercise_07 {
 
         String word = scanner.nextLine();
 
-        char letter = 'b';
+        char letter;
+        if (word != null){
+            letter = word.charAt(0);
+        } else {
+            System.out.println("error");
+            return;
+        }
         int letterNumber = 0;
 
        while (letter != 'a' && letter != 'e' && letter != 'i' && letter != 'o' && letter != 'u') {

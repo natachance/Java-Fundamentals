@@ -26,15 +26,14 @@ public class Exercise_05 {
 
         int upperNumber = scanner.nextInt();
         int lowerNumber = scanner.nextInt();
-        int lowerNumberHold = lowerNumber;
         int sum = 0;
 
-        for(; lowerNumber <= upperNumber; lowerNumber++){
-            sum += lowerNumber;
+        for(int val = lowerNumber; val <= upperNumber; val++){
+            sum += val;
         }
         System.out.println("The sum of your numbers = " + sum);
 
-        double average = (upperNumber + lowerNumberHold) / 2.0;
+        double average = (upperNumber + lowerNumber) / 2.0;
 
         System.out.println("The average = " + average);
     }

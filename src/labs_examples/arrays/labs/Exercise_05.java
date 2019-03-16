@@ -9,5 +9,18 @@ package labs_examples.arrays.labs;
  */
 
 public class Exercise_05 {
+    public static void main(String[] args) {
 
+        int[] backwards = new int[5];
+        int val = 1;
+
+        for(int i = 0; i < backwards.length; i++){
+            backwards[i] = val;
+            val++;
+        }
+
+        for(int i = backwards.length - 1; i >= 0; i -= 2){
+            System.out.print(backwards[i] + " ");
+        }
+    }
 }
