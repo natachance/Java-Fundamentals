@@ -17,6 +17,8 @@ public class Exercise_02 {
         // 1) create scanner
         Scanner scanner = new Scanner(System.in);
 
+        // 1) create scanner (don't forget to import Scanner!)
+
         // 2) prompt user
         System.out.println("Enter a number: ");
 
