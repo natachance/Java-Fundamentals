@@ -1,6 +1,16 @@
 
+For each POJO you created to complete the previous Airplane exercise,
 
-For each POJO you created to complete the previous Airplane exercise, please change all the instance variables in each
-class to "private". Then, create getter and setter methods (for each instance variable) in each class you created for
-the airplane exercise. Also, create a toString() method in each POJO. Once complete, demonstrate getting and setting
-those variables from the class in which you composed the Airplane object, as well as invoking their toString() methods.
+1. please change all the instance variables in each class to "private".
+2. Then, create getter and setter methods (for each instance variable) in each class you created for
+the airplane exercise.
+3. Also, create a toString() method in each POJO.
+4. Once complete, demonstrate getting and setting those variables from the class in which you composed the Airplane
+object,
+5. as well as invoking their toString() methods.
+
+1. switch INSTANCE VARIABLES only to private (should be at top of each class)
+2. use cmd + n to pull up menu, add getter and setter methods
+3. check that existing toStrings don't need to be updated/modified
+4. within printed line, change calls to have "get" in front (like this myAirplane.getMaxPax().getBrand() etc)
+5. did this already! :)
