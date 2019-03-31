@@ -11,11 +11,13 @@ package labs_examples.arrays.labs;
 public class Exercise_06 {
     public static void main(String[] args) {
 
+        //creating an array
         int[] data = new int[5];
         int val = 0;
 
         System.out.println("Original array: ");
 
+        //populating the array
         for(int i = 0; i < data.length; i++) {
             data[i] = val;
             val++;
@@ -25,12 +27,14 @@ public class Exercise_06 {
         System.out.println();
         System.out.println("Reversed array: ");
 
+        //reversing the array in place
         for(int i = 0; i < data.length / 2; i++ ){
             int temp = data[i];
             data[i] = data[data.length - i - 1];
             data[data.length - i - 1] = temp;
             }
 
+        //printing the reversed array
         for(int k = 0; k < data.length; k++){
             System.out.print(data[k] + " ");
         }

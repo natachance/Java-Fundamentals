@@ -13,8 +13,8 @@ public class Demo {
         Sink sink = new Sink(true, "sinkBrand", "stainless steel");
         Kitchen myKitchen = new Kitchen(dishwasher, myOven, fridge, sink);
 
-//        System.out.println("My kitchen has a " + myKitchen.getOven().getBrand() + " oven " +
-//                "with a max temp of " + myKitchen.getOven().getMaxTemp());
+        System.out.println("My kitchen has a " + myKitchen.getOven().getBrand() + " oven " +
+                "with a max temp of " + myKitchen.getOven().getMaxTemp());
 
         System.out.println(myKitchen.toString());
 
