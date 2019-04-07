@@ -6,6 +6,7 @@ package labs_examples.objects_classes_methods.labs.objects;
 //     We'll use these a bit later.
 
 class AirplaneLabOutput {
+//controller class
 
     public static void main(String[] args) {
 

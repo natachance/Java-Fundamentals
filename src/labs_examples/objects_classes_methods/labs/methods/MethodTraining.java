@@ -16,7 +16,7 @@ public class MethodTraining {
 
         int[] testArray1 = new int[10];
         for(int i = 0; i < testArray1.length; i++){
-            testArray1[i] = i;
+            testArray1[i] = i + 1;
         }
         int[] testArray2 = {47, 39, 50, 58, 2, 74, 28};
         int[] testArray3 = {34, 1, 58, 59, 20, 60, 28, 33, 79};
@@ -128,12 +128,12 @@ public class MethodTraining {
         }
 
 //      demonstrating pass by reference
-        public static void addDaysToTrip(Trip trip){
+    public static void addDaysToTrip(Trip trip){
         trip.numberOfDays = trip.numberOfDays+ 3;
-        }
+    }
 
 //    3) returning the largest of 4 numbers
-        public static int largestNumber(int a, int b, int c, int d){
+    public static int largestNumber(int a, int b, int c, int d){
         if(a > b && a > c && a > d){
             return a;
         } else if (b > c && b > d){
@@ -143,7 +143,7 @@ public class MethodTraining {
         } else {
             return d;
         }
-        }
+    }
 
 //    4) Write a method to count all consonants (the opposite of vowels) in a String
         public static int numberOfConsonants(String a){
@@ -169,9 +169,9 @@ public class MethodTraining {
         }
 
 //    6) determining if a number is prime
-        public static boolean isNumberPrime(int a){
+    public static boolean isNumberPrime(int a){
         for(int i = 2; i < a; i++){
-                if(a % i == 0){
+            if(a % i == 0){
                 return false;
             }
         }
@@ -179,7 +179,7 @@ public class MethodTraining {
     }
 
 //    7) returning highest and lowest numbers in an array, as an array
-        public static int[] lowHighNumbers(int[] array){
+    public static int[] lowHighNumbers(int[] array){
         int high = array[0];
         int low = array[0];
 
@@ -197,7 +197,7 @@ public class MethodTraining {
     }
 
 //    8) returning a populated array list
-        public static ArrayList<Integer> returnArrayList(int maxNum, int divisor1, int divisor2){
+    public static ArrayList<Integer> returnArrayList(int maxNum, int divisor1, int divisor2){
 
        ArrayList<Integer> intList = new ArrayList<>();
 
