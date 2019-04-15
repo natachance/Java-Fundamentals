@@ -1,6 +1,7 @@
 
 Without running the code below, please tell me what it will print.
 
+"Child called" because the child method overrides the parent method (even though it's not notated)
 
 
 public class InheritanceTest

@@ -4,6 +4,8 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
  * Why does the output print in the order it does?
  *
  * You answer:
+ * because the parent has to exist before the child can, so it starts with the highest level and works its way down to
+ * the lowest subclass.
  *
  */
 

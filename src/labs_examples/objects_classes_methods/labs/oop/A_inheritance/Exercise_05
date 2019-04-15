@@ -1,6 +1,9 @@
 
 Without running the code below, please tell me what will print. Why?
+Parent Called
+Child Called
 
+because it will create a new Child, which will first access the parent and then the child.
 
 
 
