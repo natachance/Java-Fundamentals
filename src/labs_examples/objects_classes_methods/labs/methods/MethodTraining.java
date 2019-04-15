@@ -105,27 +105,27 @@ public class MethodTraining {
     }
 
     // 1. demonstrating method overloading
-        public static int addition ( int a, int b){
-            int total = a + b;
-            return total;
-        }
+    public static int addition ( int a, int b){
+        int total = a + b;
+        return total;
+    }
 
-        public static int addition ( int a, int b, int c){
-            int total = a + b + c;
-            return total;
-        }
+    public static int addition ( int a, int b, int c){
+        int total = a + b + c;
+        return total;
+    }
 
-        public static double addition ( double a, double b){
-            double total = a + b;
-            return total;
-        }
+    public static double addition ( double a, double b){
+        double total = a + b;
+        return total;
+    }
 
     // 2. demonstrating pass by value
-        public static void passByValue(int a, int b){
-            a = a + 10;
-            b = b + 10;
-            System.out.println("Within passByValue a and b: " + a + ", " + b);
-        }
+    public static void passByValue(int a, int b){
+        a = a + 10;
+        b = b + 10;
+        System.out.println("Within passByValue a and b: " + a + ", " + b);
+    }
 
 //      demonstrating pass by reference
     public static void addDaysToTrip(Trip trip){
@@ -146,7 +146,7 @@ public class MethodTraining {
     }
 
 //    4) Write a method to count all consonants (the opposite of vowels) in a String
-        public static int numberOfConsonants(String a){
+    public static int numberOfConsonants(String a){
         int sum = 0;
         for(int i = 0; i < a.length(); i++){
             char letter = a.charAt(i);
@@ -155,18 +155,18 @@ public class MethodTraining {
             }
         }
         return sum;
-        }
+    }
 
 //    5) printing ascii art
-        public static void printTree(){
-            System.out.println("    *  ");
-            System.out.println("   *** ");
-            System.out.println("  ***** ");
-            System.out.println(" ******* ");
-            System.out.println("    *  ");
-            System.out.println("    *  ");
-            System.out.println("----------");
-        }
+    public static void printTree(){
+        System.out.println("    *  ");
+        System.out.println("   *** ");
+        System.out.println("  ***** ");
+        System.out.println(" ******* ");
+        System.out.println("    *  ");
+        System.out.println("    *  ");
+        System.out.println("----------");
+    }
 
 //    6) determining if a number is prime
     public static boolean isNumberPrime(int a){
@@ -210,7 +210,7 @@ public class MethodTraining {
     }
 
 //    9) reversing an array in place
-        public static int[] reverseArray(int [] array){
+    public static int[] reverseArray(int [] array){
         for(int i = 0; i < array.length / 2; i++){
             int temp = array[i];
             array[i] = array[array.length - i - 1];

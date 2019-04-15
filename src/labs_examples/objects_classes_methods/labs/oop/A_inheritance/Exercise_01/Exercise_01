@@ -5,12 +5,23 @@ labs_examples.inheritance hierarchy. For instance you could create an labs_examp
 or stores, restaurants, adventures, and really anything else you can imagine. Have some fun with it. Try to challenge
 yourself.
 
+library with different types of materials
+
 2) Once you've created this hierarchy, demonstrate the use of non-default constructors in the parent classes. Meaning,
 use the super(arg1, arg2, ...) command from a subclass to invoke a parameterized constructor in the parent class. Do this
 at least once, several times over would be better.
 
 3) Create at least three methods that override a method in one or more parent classes.
 
-4) Create a controller class/method that will create objects of your hiearchy and demonstrate how you use this labs_examples.inheritance
-hiearchy. Demonstrate that your subclasses have set the variables in the parent classes, that you have called the parameterized
-super constructors from sub-classes, that you are indeed overriding methods.
+override checkout for periodicals, since these items can't be checked out
+override digital version request for eBook, since always digital - simpler process/outcome
+
+4) Create a controller class/method that will create objects of your hiearchy and
+
+demonstrate how you use this labs_examples.inheritance hiearchy.
+
+Demonstrate that your subclasses have set the variables in the parent classes,
+
+that you have called the parameterized super constructors from sub-classes,
+
+that you are indeed overriding methods.

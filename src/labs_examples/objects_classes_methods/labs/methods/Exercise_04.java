@@ -22,9 +22,5 @@ public class Exercise_04 {
         total = factorial(x -1) * x;
         return total;
     }
-
-
-
-
 }
 
