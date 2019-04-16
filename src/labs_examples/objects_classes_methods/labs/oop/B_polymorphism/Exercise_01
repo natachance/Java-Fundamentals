@@ -4,8 +4,53 @@
     - Overriding
     - Interfaces
 
+    Interface Device
+    turnOn
+    turnOff
+    reboot
+    wake
+
+   class Computer implements Device
+   class Laptop extends Computer
+   class Desktop extends Computer
+
 2) Demonstrate the three forms of polymorphism again - but in a new set of classes. We want to lock this in.
 Challenge yourself. Build something you're proud of.
+
+Interface WebStore:
+listItem
+addToCart
+purchaseItem
+removeItem
+
+class Item variables
+int quantity
+String color
+String style
+String size
+
+subclasses:
+roperug
+coasters
+shirts
+    tshirt
+    tank
+    longsleeve
+mugs
+    ceramic
+    camping
+coozies
+
+Overriding:
+size
+coozies, coasters override "one size only"
+quantity
+coasters override "set of 4"
+
+Overloading
+for ropeRug and coasters, option to purchase customized item - so override and then overload purchaseItem method to add
+steps (buyer has to send rope in to be made into rug and/or coasters - want them to enter size, length, weight, etc. but
+they may not know all of that info)
 
 3) Demonstrate using an interface as an instance variable - have a constructor that takes in the interface as a
 parameter. Also have a setter that allows you to update the interface object. Through code, demonstrate that you
