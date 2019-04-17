@@ -11,16 +11,69 @@ public interface WebStore {
 
 class StoreController{
     public static void main(String[] args) {
-        Item newCustomRug = new CustomRopeRug(1, "blue", "doormat", "12 x 22 inch", "Celtic knot");
+        Item newCustomRug = new CustomRopeRug(1, "blue", "doormat", "12 x 22 inch",
+                "Celtic knot");
         newCustomRug.purchaseItem();
+        System.out.println();
+
+        Item newRopeRug = new RopeRug(1, "blue", "doormat", "14 x 28 inch", "waffle weave");
+        System.out.println("Listing and selling new rope rug:");
+        newRopeRug.listItem();
+        newRopeRug.addToCart();
+        newRopeRug.purchaseItem();
+        System.out.println(newRopeRug);
+        System.out.println();
+
+        Item newCustomCoasters = new CustomCoasters(4, "red", "round", "One size only.");
+        newCustomCoasters.purchaseItem();
+        System.out.println(newCustomCoasters);
+        System.out.println();
+
+        Item newCoasters = new Coasters(4, "teal", "square", "One size only.");
+        System.out.println("Listing and selling new coasters:");
+        newCoasters.listItem();
+        newCoasters.addToCart();
+        newCoasters.purchaseItem();
+        System.out.println(newCoasters);
+        System.out.println();
+
+        Item newTshirt = new Tshirt(1, "grey", "cams", "S", "cotton blend");
+        newTshirt.purchaseItem();
+        System.out.println(newTshirt);
+        System.out.println();
+
+        Item newTank = new Tank(2, "red", "mountains", "M", "synthetic blend", "womens");
+        newTank.purchaseItem();
+        System.out.println(newTank);
+        System.out.println();
+
+        Item newCampMug = new CampMug(4, "blue", "logo", "12 oz.", "stainless steel");
+        System.out.println(newCampMug);
+        System.out.println();
+
+        Item newCoozie = new Coozie(2, "purple", "rope", "One size only.");
+        System.out.println("Listing and selling new coozies:");
+        newCoozie.listItem();
+        newCoozie.addToCart();
+        newCoozie.purchaseItem();
+        System.out.println(newCoozie);
+        System.out.println();
+
+        Item newCustomCoozie = new CustomCoozie(1, "red", "rope", "One size only.");
+        System.out.println("Listing and selling custom coozie option:");
+        newCustomCoozie.listItem();
+        newCustomCoozie.addToCart();
+        newCustomCoozie.purchaseItem();
+        System.out.println(newCustomCoozie);
+        System.out.println();
     }
 }
 
 class Item implements WebStore{
-    int quantity;
-    String color;
-    String style;
-    String size;
+    protected int quantity;
+    protected String color;
+    protected String style;
+    protected String size;
 
     public Item(int quantity, String color, String style, String size) {
         this.quantity = quantity;
@@ -40,22 +93,41 @@ class Item implements WebStore{
     }
 
     @Override
-    public void purchaseItem() {
-        System.out.println("Purchasing item.");
-    }
+    public void purchaseItem() { System.out.println("Purchasing item."); }
 
     @Override
     public void removeItem() {
         System.out.println("Removing item from store.");
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                '}';
+    }
 }
 
 class RopeRug extends Item{
-    String pattern;
+    protected String pattern;
 
     public RopeRug(int quantity, String color, String style, String size, String pattern) {
         super(quantity, color, style, size);
         this.pattern = pattern;
+    }
+
+    @Override
+    public String toString() {
+        return  "RopeRug{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", pattern='" + pattern + '\'' +
+                '}';
     }
 }
 
@@ -66,42 +138,251 @@ class CustomRopeRug extends RopeRug{
 
     @Override
     public void purchaseItem(){
-        Scanner scanner1 = new Scanner(System.in);
+        Scanner scannerThickness = new Scanner(System.in);
         System.out.println("Please enter the thickness of your rope in millimeters, and hit enter.");
-        double ropeThickness = scanner1.nextDouble();
+        double ropeThickness = scannerThickness.nextDouble();
 
-        Scanner scanner2 = new Scanner(System.in);
+        Scanner scannerLength = new Scanner(System.in);
         System.out.println("Please enter the length of your rope in meters, and hit enter.");
-        double ropeLength = scanner2.nextDouble();
+        double ropeLength = scannerLength.nextDouble();
 
         if (ropeLength < 30.0){
             System.out.println("Your rope (" + ropeLength + " meters) is not long enough to make a full rug.");
         } else {
-            System.out.println("Please send your rope (" + ropeThickness + " mm, " + ropeLength + " meters) to the following address: 123 A Street.");
+            System.out.println("Please send your rope (" + ropeThickness + " mm, " + ropeLength +
+                    " meters) to the following address: 123 A Street.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return  "CustomRopeRug{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", pattern='" + pattern + '\'' +
+                '}';
     }
 }
 
 class Coasters extends Item{
     public Coasters(int quantity, String color, String style, String size) {
-        super(4, color, style, "One size only.");
+        super(4, color, style,
+                "One size only.");
+    }
+
+    @Override
+    public String toString() {
+        return  "Coasters{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                '}';
     }
 }
 
-class Shirts extends Item{
-    String fabric;
+class CustomCoasters extends Coasters{
+    public CustomCoasters(int quantity, String color, String style, String size) {
+        super(quantity, color, style, "One size only.");
+    }
 
-    public Shirts(int quantity, String color, String style, String size, String fabric) {
+    @Override
+    public void purchaseItem() {
+        Scanner scannerLength = new Scanner(System.in);
+        System.out.println("Please enter the length of your rope in inches, and hit enter.");
+        double ropeLength = scannerLength.nextDouble();
+
+        if (ropeLength < 42.0) {
+            System.out.println("Your rope (" + ropeLength + " inches) is not long enough to make a full set of coasters.");
+        } else {
+            System.out.println("Please send your rope (" + ropeLength +
+                    " centimeters) to the following address: 123 A Street.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "CustomCoasters{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                '}';
+    }
+}
+
+class Shirt extends Item{
+    protected String fabric;
+
+    public Shirt(int quantity, String color, String style, String size, String fabric) {
         super(quantity, color, style, size);
         this.fabric = fabric;
     }
+
+    @Override
+    public String toString() {
+        return  "Shirt{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", fabric='" + fabric + '\'' +
+                '}';
+    }
 }
 
-//    shirts
-//      tshirt
-//      tank
-//      longsleeve
-//    mugs
-//      ceramic
-//      camping
-//    coozies
+class Tshirt extends Shirt{
+    public Tshirt(int quantity, String color, String style, String size, String fabric) {
+        super(quantity, color, style, size, "cotton blend");
+    }
+
+    @Override
+    public String toString() {
+        return  "Tshirt{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", fabric='" + fabric + '\'' +
+                '}';
+    }
+}
+
+class Tank extends Shirt{
+    protected String gender;
+
+    public Tank(int quantity, String color, String style, String size, String fabric, String gender) {
+        super(quantity, color, style, size, fabric);
+        this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return  "Tank{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", fabric='" + fabric + '\'' +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+}
+
+class Longsleeve extends Shirt{
+    public Longsleeve(int quantity, String color, String style, String size, String fabric) {
+        super(quantity, color, style, size, fabric);
+    }
+
+    @Override
+    public String toString() {
+        return  "Longsleeve{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", fabric='" + fabric + '\'' +
+                '}';
+    }
+}
+
+class Mug extends Item{
+    protected String material;
+
+    public Mug(int quantity, String color, String style, String size, String material) {
+        super(quantity, color, style, size);
+        this.material = material;
+    }
+
+    @Override
+    public String toString() {
+        return  "Mug{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", material='" + material + '\'' +
+                '}';
+    }
+}
+
+class DinerMug extends Mug{
+    public DinerMug(int quantity, String color, String style, String size, String material) {
+        super(quantity, color, style, size, "Ceramic");
+    }
+
+    @Override
+    public String toString() {
+        return  "DinerMug{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", material='" + material + '\'' +
+                '}';
+    }
+}
+
+class CampMug extends Mug{
+    public CampMug(int quantity, String color, String style, String size, String material) {
+        super(quantity, color, style, "12 oz.", "stainless steel");
+    }
+
+    @Override
+    public String toString() {
+        return  "CampMug{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                ", material='" + material + '\'' +
+                '}';
+    }
+}
+
+class Coozie extends Item{
+    public Coozie(int quantity, String color, String style, String size) {
+        super(quantity, color, style, "One size only.");
+    }
+
+    @Override
+    public String toString() {
+        return  "Coozie{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                '}';
+    }
+}
+
+class CustomCoozie extends Coozie{
+    public CustomCoozie(int quantity, String color, String style, String size) {
+        super(quantity, color, style, size);
+    }
+
+    @Override
+    public void purchaseItem(){
+        Scanner scannerLength = new Scanner(System.in);
+        System.out.println("Please enter the length of your rope in inches, then hit enter.");
+        double ropeLength = scannerLength.nextDouble();
+
+        if(ropeLength < 36){
+            System.out.println("Your rope (" + ropeLength + " inches) is not long enough to make a coozie.");
+        } else {
+            System.out.println("Please mail your rope (" + ropeLength + " inches) to the following address: 123 A Street.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return  "CustomCoozie{" +
+                "quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", style='" + style + '\'' +
+                ", size='" + size + '\'' +
+                '}';
+    }
+}

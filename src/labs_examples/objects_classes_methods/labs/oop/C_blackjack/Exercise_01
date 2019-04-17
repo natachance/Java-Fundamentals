@@ -18,6 +18,8 @@ It will not ask for bets. The user and the computer will each start with a small
         char[] suit = new char[]{'♠', '♦', '♥', '♣'};
         int cardValue;
 
+        constructor to create card of one suit and one int
+
     Deck.java (POJO - this will hold deck data)
         Card[] cards;
         ArrayList<Integer> usedCards;
@@ -25,6 +27,8 @@ It will not ask for bets. The user and the computer will each start with a small
     Hand.java (POJO - this will hold Hand data)
         ArrayList<Card> cards;
         int handValue;
+
+        overloaded constructors to build hand with 2 cards, then with 3 cards, etc.
 
 
 2) Fill out each POJO above to the best of your ability. Also create a main() method in the BlackJackController class.

@@ -59,7 +59,7 @@ class Desktop extends Computer{
 }
 
 class Laptop extends Computer{
-    String size;
+    protected String size;
 
     public Laptop(String brand, String model, int yearManufactured, String size) {
         super(brand, model, yearManufactured);

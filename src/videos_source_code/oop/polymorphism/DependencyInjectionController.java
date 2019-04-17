@@ -8,7 +8,7 @@ import videos_source_code.oop.inheritance.Truck;
 /**
  * Created by ryandesmond - https://codingnomads.co
  */
-public class DependencyInjectionController {
+public class   DependencyInjectionController {
 
     public static void main(String[] args) {
 
