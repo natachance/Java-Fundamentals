@@ -14,11 +14,13 @@ It will not ask for bets. The user and the computer will each start with a small
         Hand hand;
         int potValue; (the amount of money they have)
 
+        overloaded to not require name and added setter method for name, to allow computer and anonymous players
+
     Card.java (POJO - this will hold card data)
         char[] suit = new char[]{'♠', '♦', '♥', '♣'};
         int cardValue;
 
-        constructor to create card of one suit and one int
+        constructor to create card of one suit and one int?
 
     Deck.java (POJO - this will hold deck data)
         Card[] cards;
@@ -28,7 +30,9 @@ It will not ask for bets. The user and the computer will each start with a small
         ArrayList<Card> cards;
         int handValue;
 
-        overloaded constructors to build hand with 2 cards, then with 3 cards, etc.
+        overloaded constructors to build hand with 2 cards, then with 3 cards, etc. - but ArrayList is already flexible
+        in size, so maybe not needed? overloaded to not require any variables - so when computer or other player's hand is
+        still face down everything will still work.
 
 
 2) Fill out each POJO above to the best of your ability. Also create a main() method in the BlackJackController class.

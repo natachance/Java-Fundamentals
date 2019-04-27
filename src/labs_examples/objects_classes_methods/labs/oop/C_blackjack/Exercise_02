@@ -1,8 +1,10 @@
 Building off the previous classes we created in Exercise_01
 
-1) In the Deck.java class, create a method that will populate the Card[] with 52 unique Card object. The cards
+1) In the Deck.java class, create a method that will populate the Card[] with 52 unique Card objects. The cards
 should mimic an actual card deck. It should contain four aces (spades, hearts, diamonds, clubs), four 2's
 (spades, hearts, diamonds, clubs), four 3's (spades, hearts, diamonds, clubs), ... up through Jacks, Queens and Kings
+
+need to visit each number (1-13) and each suit
 
 2) Create a deal() method that will take in a Player object and "deal" that player a random card out of the deck. To get
 the random card, generate a random number between 1 and 52 (inclusive). Then check the ArrayList of Integers to make sure

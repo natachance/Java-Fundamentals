@@ -11,7 +11,7 @@ public interface WebStore {
 
 class StoreController{
     public static void main(String[] args) {
-        Item newCustomRug = new CustomRopeRug(1, "blue", "doormat", "12 x 22 inch",
+        CustomRopeRug newCustomRug = new CustomRopeRug(1, "blue", "doormat", "12 x 22 inch",
                 "Celtic knot");
         newCustomRug.purchaseItem();
         System.out.println();
@@ -24,12 +24,12 @@ class StoreController{
         System.out.println(newRopeRug);
         System.out.println();
 
-        Item newCustomCoasters = new CustomCoasters(4, "red", "round", "One size only.");
+        Item newCustomCoasters = new CustomCoasters(4, "red", "round");
         newCustomCoasters.purchaseItem();
         System.out.println(newCustomCoasters);
         System.out.println();
 
-        Item newCoasters = new Coasters(4, "teal", "square", "One size only.");
+        Item newCoasters = new Coasters(4, "teal", "square");
         System.out.println("Listing and selling new coasters:");
         newCoasters.listItem();
         newCoasters.addToCart();
@@ -51,7 +51,7 @@ class StoreController{
         System.out.println(newCampMug);
         System.out.println();
 
-        Item newCoozie = new Coozie(2, "purple", "rope", "One size only.");
+        Item newCoozie = new Coozie(2, "purple", "rope");
         System.out.println("Listing and selling new coozies:");
         newCoozie.listItem();
         newCoozie.addToCart();
@@ -59,7 +59,7 @@ class StoreController{
         System.out.println(newCoozie);
         System.out.println();
 
-        Item newCustomCoozie = new CustomCoozie(1, "red", "rope", "One size only.");
+        Item newCustomCoozie = new CustomCoozie(1, "red", "rope");
         System.out.println("Listing and selling custom coozie option:");
         newCustomCoozie.listItem();
         newCustomCoozie.addToCart();
@@ -82,6 +82,12 @@ class Item implements WebStore{
         this.size = size;
     }
 
+    public Item(int quantity, String color, String style) {
+        this.quantity = quantity;
+        this.color = color;
+        this.style = style;
+    }
+
     @Override
     public void listItem() {
         System.out.println("Listing item for sale.");
@@ -98,6 +104,10 @@ class Item implements WebStore{
     @Override
     public void removeItem() {
         System.out.println("Removing item from store.");
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     @Override
@@ -121,7 +131,7 @@ class RopeRug extends Item{
 
     @Override
     public String toString() {
-        return  "RopeRug{" +
+        return "RopeRug{" +
                 "quantity=" + quantity +
                 ", color='" + color + '\'' +
                 ", style='" + style + '\'' +
@@ -167,9 +177,9 @@ class CustomRopeRug extends RopeRug{
 }
 
 class Coasters extends Item{
-    public Coasters(int quantity, String color, String style, String size) {
-        super(4, color, style,
-                "One size only.");
+    public Coasters(int quantity, String color, String style) {
+        super(quantity, color, style);
+        super.setSize("One size only.");
     }
 
     @Override
@@ -184,8 +194,9 @@ class Coasters extends Item{
 }
 
 class CustomCoasters extends Coasters{
-    public CustomCoasters(int quantity, String color, String style, String size) {
-        super(quantity, color, style, "One size only.");
+    public CustomCoasters(int quantity, String color, String style) {
+        super(quantity, color, style);
+        super.setSize("One size only.");
     }
 
     @Override
@@ -235,7 +246,7 @@ class Shirt extends Item{
 
 class Tshirt extends Shirt{
     public Tshirt(int quantity, String color, String style, String size, String fabric) {
-        super(quantity, color, style, size, "cotton blend");
+        super(quantity, color, style, size, fabric);
     }
 
     @Override
@@ -310,7 +321,7 @@ class Mug extends Item{
 
 class DinerMug extends Mug{
     public DinerMug(int quantity, String color, String style, String size, String material) {
-        super(quantity, color, style, size, "Ceramic");
+        super(quantity, color, style, size, material);
     }
 
     @Override
@@ -327,7 +338,7 @@ class DinerMug extends Mug{
 
 class CampMug extends Mug{
     public CampMug(int quantity, String color, String style, String size, String material) {
-        super(quantity, color, style, "12 oz.", "stainless steel");
+        super(quantity, color, style, size, material);
     }
 
     @Override
@@ -343,8 +354,9 @@ class CampMug extends Mug{
 }
 
 class Coozie extends Item{
-    public Coozie(int quantity, String color, String style, String size) {
-        super(quantity, color, style, "One size only.");
+    public Coozie(int quantity, String color, String style) {
+        super(quantity, color, style);
+        super.setSize("One size only.");
     }
 
     @Override
@@ -359,8 +371,9 @@ class Coozie extends Item{
 }
 
 class CustomCoozie extends Coozie{
-    public CustomCoozie(int quantity, String color, String style, String size) {
-        super(quantity, color, style, size);
+    public CustomCoozie(int quantity, String color, String style) {
+        super(quantity, color, style);
+        super.setSize("One size only.");
     }
 
     @Override
