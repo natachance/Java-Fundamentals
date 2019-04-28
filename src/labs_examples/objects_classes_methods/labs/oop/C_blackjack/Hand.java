@@ -21,4 +21,17 @@ public class Hand {
         }
         return value;
     }
+
+    //method to determine if hand value is over 21 (automatically loses)
+    public boolean handOver21 (){
+        boolean handOver21 = false;
+        int value = getHandValue();
+
+        if(value <= 21){
+            handOver21 = false;
+        } else {
+            handOver21 = true;
+        }
+        return handOver21;
+    }
 }

@@ -39,4 +39,11 @@ public class Player {
             }
         }
     }
+
+    //allows overriding of printHand method, which excludes dealer from printing - to show cards at end
+    public void showHand(){
+        for(Card c : hand.getCards()){ //prints each card in the hand (visits each card in the hand ArrayList)
+            System.out.println(c.toString());
+        }
+    }
 }
