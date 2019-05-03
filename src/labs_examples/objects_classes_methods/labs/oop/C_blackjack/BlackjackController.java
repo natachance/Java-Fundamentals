@@ -9,18 +9,11 @@ public class BlackjackController {
     public static void main(String[] args) {
         BlackjackController game = new BlackjackController(); //the game is a new instance of the BlackjackController class
         game.playBlackjack(); //calls playBlackjack method which is below
-
     }
 
     private void playBlackjack() {
-        //requesting player to input name
-        System.out.println("Welcome to Blackjack. In this game, aces = 1 and face cards = 10.");
-        System.out.println("Let's get started! What is your name?");
-        String playerName = scanner.next();
-        //assigning name (input to the scanner) to a variable/new instance of the Player class
-        Player player = new Player(playerName);
-        Player dealer = new Player("dealer");
-        System.out.println("Great, " + playerName + "! Let's play.");
+        Player player = initializePlayer();
+        Player dealer = new Player("dealer", player.getPotValue());
 
         //creating a deck variable as a new instance of the Deck class, and dealing 2 cards to each "player"
         Deck deck = new Deck();
@@ -31,9 +24,14 @@ public class BlackjackController {
 
         //printing the hands by calling the printHand method from the Player class
         System.out.println("You were dealt: ");
-        player.printHand();
+        player.printHand(true);
         System.out.println("And the dealer was dealt: ");
-        dealer.printHand();
+        dealer.printHand(false);
+
+        //taking in first player bet and generating first dealer bet
+        System.out.println("How much would you like to bet?");
+        int playerBet = scanner.nextInt();
+        System.out.println("You have bet $" + playerBet + " and the dealer has bet $" + dealer.dealerBet(dealer.getPotValue()) + ".");
 
         //checking if either player wants to keep playing
         boolean playerContinue = true;
@@ -47,7 +45,7 @@ public class BlackjackController {
                 //deals another card if player input Y to scanner, otherwise ends dealing option for player
                 if (response.equalsIgnoreCase("Y")) {
                     deck.deal(player);
-                    player.printHand();
+                    player.printHand(true);
                 } else {
                     playerContinue = false;
                 }
@@ -75,16 +73,6 @@ public class BlackjackController {
                 return;
             }
 
-            //why do the above with a method vs. the below?
-//            if (player.getHand().getHandValue() > 21){
-//                System.out.println("You've gone over 21! Game over.");
-//                return;
-//            }
-//
-//            if(dealer.getHand().getHandValue() > 21){
-//                System.out.println("The dealer went over 21! You win!");
-//                return;
-//            }
         }
 
         // determine which person has the highest value hand and wins, if neither went over and neither wants another card
@@ -93,9 +81,24 @@ public class BlackjackController {
                     + dealer.getHand().getHandValue() + " points.");
         } else {
             System.out.println("Dealer's cards:");
-            dealer.showHand();
+            dealer.printHand(true);
             System.out.println("The dealer has " + dealer.getHand().getHandValue() + " points. You have " +
                     player.getHand().getHandValue() + " points. You win!");
         }
+    }
+
+    private Player initializePlayer() {
+        //requesting player to input name
+        System.out.println("Welcome to Blackjack. In this game, aces = 1 and face cards = 10.");
+        System.out.println("Let's get started! What is your name?");
+        String playerName = scanner.next();
+
+        System.out.println("How much money would you like to start with?");
+        int potValue = scanner.nextInt();
+
+        //assigning name (input to the scanner) to a variable/new instance of the Player class
+        Player player = new Player(playerName, potValue);
+        System.out.println("Great, " + playerName + "! You're starting with $" + potValue + ". Let's play.");
+        return player;
     }
 }

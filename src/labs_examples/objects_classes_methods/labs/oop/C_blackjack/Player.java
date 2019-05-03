@@ -6,8 +6,9 @@ public class Player {
     private int potValue;
 
     //constructor for player's name
-    public Player(String name) {
+    public Player(String name, int potValue) {
         this.name = name;
+        this.potValue = potValue;
     }
 
     //setter method for name
@@ -29,8 +30,8 @@ public class Player {
     }
 
     //method to print out the player's hand to the console - if the "player" is the dealer, only one card will "show"
-    public void printHand(){
-        if (name.equalsIgnoreCase("dealer")){ //.equalsIgnoreCase is a stock method we can call
+    public void printHand(boolean showFullHand){
+        if (!showFullHand){
             System.out.println(hand.getCards().get(0).toString()); //gets the card at the index of 0 in the Cards array and prints it
             System.out.println("All other dealer cards are face down.");
         } else {
@@ -40,10 +41,21 @@ public class Player {
         }
     }
 
-    //allows overriding of printHand method, which excludes dealer from printing - to show cards at end
-    public void showHand(){
-        for(Card c : hand.getCards()){ //prints each card in the hand (visits each card in the hand ArrayList)
-            System.out.println(c.toString());
+    //method to set dealer bet automatically based on hand value
+    public int dealerBet(int potValue){
+        int dealerBet;
+        if(hand.getHandValue() >= 19 && hand.getHandValue() <= 21){
+            dealerBet = potValue / 2;
+            return dealerBet;
+        } else if (hand.getHandValue() >= 14 && hand.getHandValue() <= 18){
+            dealerBet = potValue / 3;
+            return  dealerBet;
+        } else if (hand.getHandValue() >= 9 && hand.getHandValue() <= 13){
+            dealerBet = potValue / 4;
+            return  dealerBet;
+        } else {
+            dealerBet = potValue / 5;
+            return dealerBet;
         }
     }
 }

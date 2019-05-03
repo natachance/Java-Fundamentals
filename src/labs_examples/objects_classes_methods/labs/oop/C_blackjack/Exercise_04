@@ -1,6 +1,41 @@
 
-Make the BlackJack game we just created better. Add a way for the user and the computer to bet. Give the user and computer
-both an initial sum of "money" and let them play with it. Take actual bets. If either user runs out of money, stop the game.
+Make the BlackJack game we just created better. Add a way for the user and the computer to bet.
+
+Give the user and computer both an initial sum of "money" and let them play with it.
+-in player constructor, assign initial value? ($100 per player/dealer)
+
+Take actual bets.
+-basically just changing an int for each player and an int for total pot value
+-potValue += playerBet + dealerBet
+-scanner input in controller method
+-how to manage dealer bets?
+    -if dealer hand = 19-21, bet 40
+    -if dealer hand = 14-18, bet 30
+    -if dealer hand = 9-13, bet 20
+    -if dealer hand = 1-8 bet 10
+
+-minimum bets (later)
+
+
+If either user runs out of money, stop the game.
+if potValue = 0, print "You're out of money! Game over.", and return;
+
 Consistently print out the current amount of money both the user and computer have after each game.
+-add line to each existing game ending text option
 
 Any additional features you'd like to add? Go for it!
+
+-ask if want to play another game after overall game ends
+
+
+    //allows overriding of printHand method, which excludes dealer from printing - to show cards at end
+    public void showHand(){
+        for(Card c : hand.getCards()){ //prints each card in the hand (visits each card in the hand ArrayList)
+            System.out.println(c.toString());
+        }
+    }
+
+    NEXT STEPS
+    //need to add ability/question to bet more,
+    plus end game when one person runs out of $,
+    plus add losing players bet to other person's potValue
