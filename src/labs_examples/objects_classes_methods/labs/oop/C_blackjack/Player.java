@@ -29,6 +29,10 @@ public class Player {
         return potValue;
     }
 
+    public void setPotValue(int potValue) {
+        this.potValue = potValue;
+    }
+
     //method to print out the player's hand to the console - if the "player" is the dealer, only one card will "show"
     public void printHand(boolean showFullHand){
         if (!showFullHand){
@@ -43,19 +47,29 @@ public class Player {
 
     //method to set dealer bet automatically based on hand value
     public int dealerBet(int potValue){
-        int dealerBet;
-        if(hand.getHandValue() >= 19 && hand.getHandValue() <= 21){
-            dealerBet = potValue / 2;
-            return dealerBet;
-        } else if (hand.getHandValue() >= 14 && hand.getHandValue() <= 18){
-            dealerBet = potValue / 3;
-            return  dealerBet;
-        } else if (hand.getHandValue() >= 9 && hand.getHandValue() <= 13){
-            dealerBet = potValue / 4;
-            return  dealerBet;
-        } else {
-            dealerBet = potValue / 5;
-            return dealerBet;
+        int dealerBet = 0;
+        while (dealerBet <= potValue) {
+            if (hand.getHandValue() >= 19 && hand.getHandValue() <= 21) {
+                dealerBet = potValue / 2;
+                return dealerBet;
+            } else if (hand.getHandValue() >= 14 && hand.getHandValue() <= 18) {
+                dealerBet = potValue / 3;
+                return dealerBet;
+            } else if (hand.getHandValue() >= 9 && hand.getHandValue() <= 13) {
+                dealerBet = potValue / 4;
+                return dealerBet;
+            } else {
+                dealerBet = 0;
+                return dealerBet;
+            }
         }
+        return dealerBet;
+    }
+
+    public boolean checkBet(int playerBet, int potValue){
+        if (playerBet > potValue){
+
+        }
+        return true;
     }
 }
