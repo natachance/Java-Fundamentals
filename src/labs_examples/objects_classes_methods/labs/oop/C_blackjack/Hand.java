@@ -34,4 +34,8 @@ public class Hand {
         }
         return handOver21;
     }
+
+    public void clearHand(){
+        cards.clear();
+    }
 }

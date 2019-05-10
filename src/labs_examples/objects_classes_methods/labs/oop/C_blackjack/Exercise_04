@@ -39,3 +39,37 @@ Any additional features you'd like to add? Go for it!
     //need to add ability/question to bet more,
     plus end game when one person runs out of $,
     plus add losing players bet to other person's potValue
+
+
+CURRENT ISSUES TO FIX
+5/9/19
+when I increased my bet, stopped asking if I wanted another card, dealer stopped taking cards - stuck in loop asking each
+if want to increase bet
+I think this is because when I said Y to another card, it bumped me into the while loop with condition player continue
+Might need to move betting additions up to card additions somehow
+-tried moving these up to right after player takes another card and dealer takes another card respectively
+-seems like this worked!
+
+When I say N to another card, got stuck infinitely looping the part where it shows dealers cards, points, and says dealer wins.
+-changed while to if
+-also took out player.getHand().getHandValue() <= 21 && dealer.getHand().getHandValue() <= 21 in favor of over21 method
+-seems like this worked!
+
+When new hand dealt, still printing cards from last hand first, then adding two new cards.
+Probably need to clear Hand array somehow in addition to deck array.
+-looked and think it's actually Cards array
+-will try to build method to do this similar to shuffleDeck method
+-it's working!
+
+Can I make the over 21 message immediate? Still prompting bet first, and also need to update bet after hand over 21:
+Dealer took another card.
+Dealer bet remains: $50.
+The dealer went over 21! You win the hand!
+
+-tried switching if playerContinue & dealerContinue to while loops, adding if handOver21 blocks after card deal, & if
+ true set playerContinue & dealerContinue to false with break statement - hoping it breaks out of while loop and then
+ because variables set to false, breaks out of outer loop too
+ -seems to work!
+
+ Can bet more than I have left in subsequent hands
+ -need to add or duplicate if statement checking bet amount
