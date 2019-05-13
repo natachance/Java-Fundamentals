@@ -1,5 +1,6 @@
 
 For this exercise please model and build your own Object-Oriented Application. You can build whatever you want.
+
 Demonstrate your understanding of Encapsulation, Inheritance and Polymorphism - as well as all the other skills you
 now have. Be creative. Have fun. Challenge yourself. What would you like to build? A restaurant service? A rock climbing
 application? An interactive model of the universe? An application to help biologists? A financial trading application?
@@ -7,3 +8,33 @@ A payroll and HR application? Is there something you could use in your day to da
 application around?
 
 Imagine it, design it, build it, test it. Have some fun. Reach out anytime you're stuck.
+
+
+To-do list randomizer app
+helps with decision fatigue and low motivation by randomly assigning you a task from a list you've input
+
+User inputs Strings of to-do items, these Strings populate an Array List
+
+Ask user to enter another item, or if done, type "done" (if ignorecase then move on)
+
+Then ask "Ready to complete a task? y/n"
+
+if Y - randomly choose a String from Array List
+"Your task is x"
+
+When you've finished your task, type "done"
+Or to choose a different task, type "next"
+
+if done, move to completedTasks Array List.
+if next, leave in place and choose another random task.
+
+Then loop back to "Ready to complete a task? y/n"
+
+
+Next level: multiple Array Lists for different categories of tasks.
+
+Classes:
+Controller
+List
+Task
+Person?

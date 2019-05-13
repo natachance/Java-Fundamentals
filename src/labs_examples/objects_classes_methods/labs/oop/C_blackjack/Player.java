@@ -11,9 +11,13 @@ public class Player {
         this.potValue = potValue;
     }
 
-    //setter method for name
+    //setter methods for name and pot value
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPotValue(int potValue) {
+        this.potValue = potValue;
     }
 
     //getter methods for all instance variables in Player class (don't want setters for hand and potValue)
@@ -27,10 +31,6 @@ public class Player {
 
     public int getPotValue() {
         return potValue;
-    }
-
-    public void setPotValue(int potValue) {
-        this.potValue = potValue;
     }
 
     //method to print out the player's hand to the console - if the "player" is the dealer, only one card will "show"
@@ -73,6 +73,7 @@ public class Player {
         return true;
     }
 
+    //method to show dealer hand, declare point values for dealer and player, and add player bet to dealer pot when dealer wins
     public void dealerWin(Player player, Player dealer, int playerBet){
         System.out.println();
         System.out.println("Dealer's cards:");
@@ -91,6 +92,7 @@ public class Player {
         System.out.println("-----------------------------------");
     }
 
+    //method to show dealer hand, declare point values for dealer and player, and add dealer bet to player pot when player wins
     public void playerWin(Player player, Player dealer, int dealerBet){
         System.out.println();
         System.out.println("Dealer's cards:");
