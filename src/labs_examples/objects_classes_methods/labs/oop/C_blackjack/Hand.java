@@ -15,7 +15,7 @@ public class Hand {
     //method to get the total value of a hand
     public int getHandValue() {
         int value = 0;
-        //looks at each card in the cards (hand) Array List
+        //looks at each card in the cards (hand) Array TaskList
         for(Card c : cards){
             value += c.getPointValue(); //calls the getter method to get the int pointValue from the card class, adds together
         }

@@ -35,14 +35,29 @@ public class Deck {
         do{
             Random r = new Random(); //using Random method(?) imported/found online
             value = r.nextInt((51 - 0) + 1) + 0; //picking a random card from the cards array, between 1-52
-        } while(usedCards.contains(value)); //checks usedCards Array List, if it contains the selected card, will loop again
+        } while(usedCards.contains(value)); //checks usedCards Array TaskList, if it contains the selected card, will loop again
 
         player.getHand().getCards().add(cards[value]); //adds the randomly selected card to the player's hand
-        usedCards.add(value); //adds the randomly selected card to the usedCards Array List
+        usedCards.add(value); //adds the randomly selected card to the usedCards Array TaskList
     }
 
-    //clears the usedCards Array List, so we can now have any/all cards in the deck available for selection again
+    //clears the usedCards Array TaskList, so we can now have any/all cards in the deck available for selection again
     public void shuffleDeck(){
         usedCards.clear();
+    }
+
+    //method to deal two cards each to player and dealer at start of hand
+    public void initialDeal(Player player, Player dealer) {
+        deal(player);
+        deal(dealer);
+        deal(player);
+        deal(dealer);
+
+        System.out.println();
+        System.out.println("You were dealt: ");
+        player.printHand(true);
+        System.out.println();
+        System.out.println("And the dealer was dealt: ");
+        dealer.printHand(false);
     }
 }

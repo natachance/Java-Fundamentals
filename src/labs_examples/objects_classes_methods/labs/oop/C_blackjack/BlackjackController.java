@@ -29,41 +29,18 @@ public class BlackjackController {
             //creating a deck variable as a new instance of the Deck class
             Deck deck = new Deck();
 
-            //calling method to clear usedCards Array List
-            deck.shuffleDeck();
+            //calls method to clear usedCards ArrayList and player and dealer's hands
+            resetGame(deck, player, dealer);
 
-            //calling method to clear each player's cards array that makes up their hand
-            player.getHand().clearHand();
-            dealer.getHand().clearHand();
-
-            //dealing 2 cards to each "player"
-            deck.deal(player);
-            deck.deal(dealer);
-            deck.deal(player);
-            deck.deal(dealer);
-
-            //printing the hands by calling the printHand method from the Player class
-            System.out.println();
-            System.out.println("You were dealt: ");
-            player.printHand(true);
-            System.out.println();
-            System.out.println("And the dealer was dealt: ");
-            dealer.printHand(false);
+            //deal two cards each to player and dealer at start of hand
+            deck.initialDeal(player, dealer);
 
             //taking in first player bet and generating first dealer bet
             int dealerBet = dealer.dealerBet(dealer.getPotValue());
-            System.out.println("How much would you like to bet?");
-            int playerBet = scanner.nextInt();
-
-            if (playerBet > player.getPotValue()) {
-                System.out.println("You have $" + player.getPotValue() + " to play with currently. Please choose a lower amount.");
-                int updatedPlayerBet = scanner.nextInt();
-                playerBet = updatedPlayerBet;
-            }
+            int playerBet = player.playerBet(player);
 
             System.out.println("You have bet $" + playerBet + " and the dealer has bet $" + dealerBet + ".");
             System.out.println();
-
 
             //checking if either player wants to keep playing
             boolean playerContinue = true;
@@ -85,37 +62,13 @@ public class BlackjackController {
 
                         //checks if a hand goes over 21 point value, which ends the game
                         if (player.getHand().handOver21()) {
-                            System.out.println();
-                            System.out.println("You've gone over 21!");
-                            dealer.dealerWin(player, dealer, playerBet);
-                            System.out.println("-----------------------------------");
+                            player.playerOver21(player, dealer, playerBet);
                             playerContinue = false;
                             dealerContinue = false;
                             break;
-
                         } else {
                             //checks if player wants to increase bet
-                            System.out.println("Would you like to add to your bet?");
-                            String betResponse = scanner.next();
-
-                            if (betResponse.equalsIgnoreCase("Y")) {
-                                System.out.println("How much?");
-                                playerBet += scanner.nextInt();
-
-                                //requires lower bet if player bets more than in current pot
-                                if (playerBet > player.getPotValue()) {
-                                    System.out.println("You have $" + player.getPotValue() +
-                                            " to play with currently. Please choose a lower amount.");
-                                    int updatedPlayerBet = scanner.nextInt();
-                                    playerBet = updatedPlayerBet;
-                                } else {
-                                    System.out.println("Your total bet is: $" + playerBet + ".");
-                                    System.out.println();
-                                }
-                            } else {
-                                System.out.println("Ok, your bet remains: $" + playerBet + ".");
-                                System.out.println();
-                            }
+                            player.playerAddToBet(player, playerBet);
                         }
                     } else {
                         playerContinue = false;
@@ -131,26 +84,13 @@ public class BlackjackController {
 
                         //checks if a hand goes over 21 point value, which ends the game
                         if (dealer.getHand().handOver21()) {
-                            System.out.println();
-                            System.out.println("The dealer went over 21!");
-                            player.playerWin(player, dealer, dealerBet);
-                            System.out.println("-----------------------------------");
+                            dealer.dealerOver21(player, dealer, dealerBet);
                             dealerContinue = false;
                             playerContinue = false;
                             break;
                         } else {
-
                             //compares dealerBet to hand value and follows criteria in dealerBet method to increase bet or not
-                            int temp = dealerBet;
-                            dealerBet += dealer.dealerBet(dealer.getPotValue());
-
-                            if (temp < dealerBet) {
-                                System.out.println("Dealer has raised bet to: $" + dealerBet + ".");
-                                System.out.println();
-                            } else {
-                                System.out.println("Dealer bet remains: $" + dealerBet + ".");
-                                System.out.println();
-                            }
+                            dealer.dealerAddToBet(dealer, dealerBet);
                         }
                     } else {
                         dealerContinue = false;
@@ -158,10 +98,8 @@ public class BlackjackController {
                     }
                 }
             }
-
             // determine which person has the highest value hand and wins
             if (!player.getHand().handOver21() && !dealer.getHand().handOver21()) {
-
                 // if dealer wins
                 if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
                     dealer.dealerWin(player, dealer, playerBet);
@@ -172,17 +110,7 @@ public class BlackjackController {
             }
         }
 
-        if (player.getPotValue() == 0) {
-            System.out.println("You ran out of money! The dealer wins.");
-            System.out.println();
-            System.out.println("--------------------GAME OVER--------------------");
-            return;
-        } else {
-            System.out.println("The dealer ran out of money! You win the game!");
-            System.out.println();
-            System.out.println("------------------GAME OVER-------------------");
-            return;
-        }
+        checkForBroke(player);
     }
 
     private Player initializePlayer() {
@@ -199,5 +127,28 @@ public class BlackjackController {
         System.out.println();
         System.out.println("Great, " + playerName + "! You're starting with $" + potValue + ", and so is the dealer. Let's play.");
         return player;
+    }
+
+    private void resetGame(Deck deck, Player player, Player dealer) {
+        //calling method to clear usedCards Array TaskList
+        deck.shuffleDeck();
+
+        //calling method to clear each player's cards array that makes up their hand
+        player.getHand().clearHand();
+        dealer.getHand().clearHand();
+    }
+
+    private void checkForBroke(Player player) {
+        if (player.getPotValue() == 0) {
+            System.out.println("You ran out of money! The dealer wins.");
+            System.out.println();
+            System.out.println("--------------------GAME OVER--------------------");
+            return;
+        } else {
+            System.out.println("The dealer ran out of money! You win the game!");
+            System.out.println();
+            System.out.println("------------------GAME OVER-------------------");
+            return;
+        }
     }
 }

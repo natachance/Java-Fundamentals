@@ -37,4 +37,13 @@ Classes:
 Controller
 List
 Task
-Person?
+Category
+
+-might need Array List of categories
+
+-think about adding more options to incorporate detail (like car registration
+
+-could have default values so could just hit enter and add a bunch of tasks, but then maybe have option to do more
+detailed tasks
+
+-Android emulator
