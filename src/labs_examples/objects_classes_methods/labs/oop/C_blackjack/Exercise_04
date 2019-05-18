@@ -77,3 +77,6 @@ The dealer went over 21! You win the hand!
 
  -need to look at betting methods, see if can consolidate further
  -need to look at over21 methods, seems like could be duplication, and still not simple enough
+
+ -checkBet - it's working ok but not returning the playerBet, or, the playerBet variable isn't getting updated to the
+ new bet like it should

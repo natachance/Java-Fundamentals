@@ -72,12 +72,59 @@ public class Player {
     public int checkBet(Player player, int playerBet){
         Scanner scanner = new Scanner(System.in);
 
-        if (playerBet > player.getPotValue()) {
+        while (playerBet > player.getPotValue()) {
             System.out.println("You have $" + player.getPotValue() + " to play with currently. Please choose a lower amount.");
-            int updatedPlayerBet = scanner.nextInt();
-            playerBet = updatedPlayerBet;
+            playerBet = scanner.nextInt();
         }
         return playerBet;
+    }
+
+    public int playerBet(Player player) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("How much would you like to bet?");
+        int playerBet = scanner.nextInt();
+
+        //checks whether bet is higher than current pot value, and if so takes in an updated bet
+        int updatedPlayerBet = player.checkBet(player, playerBet);
+
+        return updatedPlayerBet;
+    }
+
+    public int playerAddToBet(Player player, int playerBet) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Would you like to add to your bet?");
+        String betResponse = scanner.next();
+
+        if (betResponse.equalsIgnoreCase("Y")) {
+            System.out.println("How much?");
+            playerBet += scanner.nextInt();
+
+            //requires lower bet if player bets more than in current pot
+            player.checkBet(player, playerBet);
+
+            System.out.println("Your total bet is: $" + playerBet + ".");
+            System.out.println();
+        } else {
+            System.out.println("Ok, your bet remains: $" + playerBet + ".");
+            System.out.println();
+        }
+        return playerBet;
+    }
+
+    public int dealerAddToBet(Player dealer, int dealerBet) {
+        int temp = dealerBet;
+        dealerBet += dealer.dealerBet(dealer.getPotValue());
+
+        if (temp < dealerBet) {
+            System.out.println("Dealer has raised bet to: $" + dealerBet + ".");
+            System.out.println();
+        } else {
+            System.out.println("Dealer bet remains: $" + dealerBet + ".");
+            System.out.println();
+        }
+        return dealerBet;
     }
 
     //method to show dealer hand, declare point values for dealer and player, and add player bet to dealer pot when dealer wins
@@ -118,18 +165,6 @@ public class Player {
         System.out.println("-----------------------------------");
     }
 
-    public int playerBet(Player player) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("How much would you like to bet?");
-        int playerBet = scanner.nextInt();
-
-        //checks whether bet is higher than current pot value, and if so takes in an updated bet
-        player.checkBet(player, playerBet);
-
-        return playerBet;
-    }
-
     public void playerOver21(Player player, Player dealer, int playerBet) {
         System.out.println();
         System.out.println("You've gone over 21!");
@@ -137,46 +172,10 @@ public class Player {
         System.out.println("-----------------------------------");
     }
 
-    public int playerAddToBet(Player player, int playerBet) {
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Would you like to add to your bet?");
-        String betResponse = scanner.next();
-
-        if (betResponse.equalsIgnoreCase("Y")) {
-            System.out.println("How much?");
-            playerBet += scanner.nextInt();
-
-            //requires lower bet if player bets more than in current pot
-            player.checkBet(player, playerBet);
-
-            System.out.println("Your total bet is: $" + playerBet + ".");
-            System.out.println();
-            } else {
-            System.out.println("Ok, your bet remains: $" + playerBet + ".");
-            System.out.println();
-        }
-        return playerBet;
-    }
-
     public void dealerOver21(Player player, Player dealer, int dealerBet) {
         System.out.println();
         System.out.println("The dealer went over 21!");
         player.playerWin(player, dealer, dealerBet);
         System.out.println("-----------------------------------");
-    }
-
-    public int dealerAddToBet(Player dealer, int dealerBet) {
-        int temp = dealerBet;
-        dealerBet += dealer.dealerBet(dealer.getPotValue());
-
-        if (temp < dealerBet) {
-            System.out.println("Dealer has raised bet to: $" + dealerBet + ".");
-            System.out.println();
-        } else {
-            System.out.println("Dealer bet remains: $" + dealerBet + ".");
-            System.out.println();
-        }
-        return dealerBet; 
     }
 }

@@ -11,20 +11,12 @@ public class BlackjackController {
         Player player = game.initializePlayer();
         Player dealer = new Player("dealer", player.getPotValue());
 
-        game.playBlackjack(player, dealer); //calls playBlackjack method which is below
-
-//        if (player.getPotValue() > 0 && dealer.getPotValue() > 0){
-//            game.playBlackjack(player, dealer);
-//        } else if (dealer.getPotValue() == 0) {
-//            System.out.println("The dealer ran out of money! You win!");
-//        } else {
-//            System.out.println("You ran out of money. The dealer wins. Game over.");
-//        }
+        do {
+            game.playBlackjack(player, dealer); //calls playBlackjack method which is below
+        } while (player.getPotValue() > 0 && dealer.getPotValue() > 0);
     }
 
     private void playBlackjack(Player player, Player dealer) {
-
-        while (player.getPotValue() > 0 && dealer.getPotValue() > 0) {
 
             //creating a deck variable as a new instance of the Deck class
             Deck deck = new Deck();
@@ -38,6 +30,9 @@ public class BlackjackController {
             //taking in first player bet and generating first dealer bet
             int dealerBet = dealer.dealerBet(dealer.getPotValue());
             int playerBet = player.playerBet(player);
+
+            //checks whether bet is higher than current pot value, and if so takes in an updated bet
+            playerBet = player.checkBet(player, playerBet);
 
             System.out.println("You have bet $" + playerBet + " and the dealer has bet $" + dealerBet + ".");
             System.out.println();
@@ -68,7 +63,7 @@ public class BlackjackController {
                             break;
                         } else {
                             //checks if player wants to increase bet
-                            player.playerAddToBet(player, playerBet);
+                            playerBet = player.playerAddToBet(player, playerBet);
                         }
                     } else {
                         playerContinue = false;
@@ -90,7 +85,7 @@ public class BlackjackController {
                             break;
                         } else {
                             //compares dealerBet to hand value and follows criteria in dealerBet method to increase bet or not
-                            dealer.dealerAddToBet(dealer, dealerBet);
+                            dealerBet = dealer.dealerAddToBet(dealer, dealerBet);
                         }
                     } else {
                         dealerContinue = false;
@@ -108,9 +103,7 @@ public class BlackjackController {
                     player.playerWin(player, dealer, dealerBet);
                 }
             }
-        }
-
-        checkForBroke(player);
+        checkForBroke(player, dealer);
     }
 
     private Player initializePlayer() {
@@ -138,17 +131,19 @@ public class BlackjackController {
         dealer.getHand().clearHand();
     }
 
-    private void checkForBroke(Player player) {
+    private void checkForBroke(Player player, Player dealer) {
         if (player.getPotValue() == 0) {
             System.out.println("You ran out of money! The dealer wins.");
             System.out.println();
             System.out.println("--------------------GAME OVER--------------------");
             return;
-        } else {
+        } else if (dealer.getPotValue() == 0) {
             System.out.println("The dealer ran out of money! You win the game!");
             System.out.println();
             System.out.println("------------------GAME OVER-------------------");
             return;
+        } else {
+            System.out.println("Let's play another hand!");
         }
     }
 }
