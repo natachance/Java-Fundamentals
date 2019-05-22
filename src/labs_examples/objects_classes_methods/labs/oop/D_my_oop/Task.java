@@ -5,14 +5,12 @@ import java.util.Date;
 public class Task {
 
     private String title;
-    private String description;
     private Date creationDate;
     private Date dueDate;
-    private Category category;
+    private String category;
 
-    public Task(String title, String description, Date creationDate, Date dueDate, Category category) {
+    public Task(String title, Date creationDate, Date dueDate, String category) {
         this.title = title;
-        this.description = description;
         this.creationDate = creationDate;
         this.dueDate = dueDate;
         this.category = category;
@@ -26,14 +24,6 @@ public class Task {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Date getCreationDate() {
@@ -52,11 +42,11 @@ public class Task {
         this.dueDate = dueDate;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 
@@ -64,10 +54,9 @@ public class Task {
     public String toString() {
         return "Task{" +
                 "title='" + title + '\'' +
-                ", description='" + description + '\'' +
                 ", creationDate=" + creationDate +
                 ", dueDate=" + dueDate +
-                ", category=" + category +
+                ", category='" + category + '\'' +
                 '}';
     }
 }

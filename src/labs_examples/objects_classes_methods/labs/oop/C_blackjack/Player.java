@@ -6,11 +6,13 @@ public class Player {
     private String name;
     private Hand hand = new Hand();
     private int potValue;
+    boolean continuePlay;
 
     //constructor for player's name
     public Player(String name, int potValue) {
         this.name = name;
         this.potValue = potValue;
+        continuePlay = true;
     }
 
     //setter methods for name
@@ -33,6 +35,14 @@ public class Player {
 
     public int getPotValue() {
         return potValue;
+    }
+
+    public boolean isContinuePlay() {
+        return continuePlay;
+    }
+
+    public void setContinuePlay(boolean continuePlay) {
+        this.continuePlay = continuePlay;
     }
 
     //method to print out the player's hand to the console - if the "player" is the dealer, only one card will "show"
@@ -115,14 +125,16 @@ public class Player {
 
     public int dealerAddToBet(Player dealer, int dealerBet) {
         int temp = dealerBet;
-        dealerBet += dealer.dealerBet(dealer.getPotValue());
+        if (dealer.getPotValue() <= dealerBet) {
+            dealerBet += dealer.dealerBet(dealer.getPotValue());
 
-        if (temp < dealerBet) {
-            System.out.println("Dealer has raised bet to: $" + dealerBet + ".");
-            System.out.println();
-        } else {
-            System.out.println("Dealer bet remains: $" + dealerBet + ".");
-            System.out.println();
+            if (temp < dealerBet) {
+                System.out.println("Dealer has raised bet to: $" + dealerBet + ".");
+                System.out.println();
+            } else {
+                System.out.println("Dealer bet remains: $" + dealerBet + ".");
+                System.out.println();
+            }
         }
         return dealerBet;
     }
@@ -165,17 +177,18 @@ public class Player {
         System.out.println("-----------------------------------");
     }
 
-    public void playerOver21(Player player, Player dealer, int playerBet) {
+    public void checkOver21(Player player, Player dealer, int playerBet, int dealerBet) {
         System.out.println();
-        System.out.println("You've gone over 21!");
-        dealer.dealerWin(player, dealer, playerBet);
-        System.out.println("-----------------------------------");
-    }
+        if (player.getHand().handOver21()) {
+            System.out.println("You've gone over 21!");
+            dealer.dealerWin(player, dealer, playerBet);
+        } else if (dealer.getHand().handOver21()){
+            System.out.println("The dealer went over 21!");
+            player.playerWin(player, dealer, dealerBet);
+        } else return;
 
-    public void dealerOver21(Player player, Player dealer, int dealerBet) {
-        System.out.println();
-        System.out.println("The dealer went over 21!");
-        player.playerWin(player, dealer, dealerBet);
         System.out.println("-----------------------------------");
+        player.setContinuePlay(false);
+        dealer.setContinuePlay(false);
     }
 }

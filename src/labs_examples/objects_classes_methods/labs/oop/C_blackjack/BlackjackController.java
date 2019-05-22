@@ -18,91 +18,79 @@ public class BlackjackController {
 
     private void playBlackjack(Player player, Player dealer) {
 
-            //creating a deck variable as a new instance of the Deck class
-            Deck deck = new Deck();
+        //creating a deck variable as a new instance of the Deck class
+        Deck deck = new Deck();
 
-            //calls method to clear usedCards ArrayList and player and dealer's hands
-            resetGame(deck, player, dealer);
+        //calls method to clear usedCards ArrayList, and player and dealer's hands
+        resetGame(deck, player, dealer);
 
-            //deal two cards each to player and dealer at start of hand
-            deck.initialDeal(player, dealer);
+        //deal two cards each to player and dealer at start of hand
+        deck.initialDeal(player, dealer);
 
-            //taking in first player bet and generating first dealer bet
-            int dealerBet = dealer.dealerBet(dealer.getPotValue());
-            int playerBet = player.playerBet(player);
+        //taking in first player bet and generating first dealer bet
+        int dealerBet = dealer.dealerBet(dealer.getPotValue());
+        int playerBet = player.playerBet(player);
 
-            //checks whether bet is higher than current pot value, and if so takes in an updated bet
-            playerBet = player.checkBet(player, playerBet);
+        //checks whether bet is higher than current pot value, and if so takes in an updated bet
+        playerBet = player.checkBet(player, playerBet);
 
-            System.out.println("You have bet $" + playerBet + " and the dealer has bet $" + dealerBet + ".");
-            System.out.println();
+        System.out.println("You have bet $" + playerBet + " and the dealer has bet $" + dealerBet + ".");
+        System.out.println();
 
-            //checking if either player wants to keep playing
-            boolean playerContinue = true;
-            boolean dealerContinue = true;
+        while (player.continuePlay || dealer.continuePlay) {
 
-            while (playerContinue || dealerContinue) {
+            //checking if player wants another card
+            if (player.continuePlay) {
+                System.out.println("Would you like another card? (Y/N)");
+                String cardResponse = scanner.next();
+                System.out.println();
 
-                //checking if player wants another card
-                while (playerContinue) {
-                    System.out.println("Would you like another card? (Y/N)");
-                    String cardResponse = scanner.next();
+                //deals another card if player input Y to scanner, otherwise ends dealing option for player
+                if (cardResponse.equalsIgnoreCase("Y")) {
+                    deck.deal(player);
+                    player.printHand(true);
                     System.out.println();
 
-                    //deals another card if player input Y to scanner, otherwise ends dealing option for player
-                    if (cardResponse.equalsIgnoreCase("Y")) {
-                        deck.deal(player);
-                        player.printHand(true);
-                        System.out.println();
-
-                        //checks if a hand goes over 21 point value, which ends the game
-                        if (player.getHand().handOver21()) {
-                            player.playerOver21(player, dealer, playerBet);
-                            playerContinue = false;
-                            dealerContinue = false;
-                            break;
-                        } else {
-                            //checks if player wants to increase bet
-                            playerBet = player.playerAddToBet(player, playerBet);
-                        }
+                    //checks if a hand goes over 21 point value, which ends the game
+                    if (player.getHand().handOver21()) {
+                        player.checkOver21(player, dealer, playerBet, dealerBet);
+                        break;
                     } else {
-                        playerContinue = false;
+                        //checks if player wants to increase bet
+                        playerBet = player.playerAddToBet(player, playerBet);
                     }
-                }
-
-                //deals another card to the dealer as long as dealer hand is less than 16, then ends dealing option for dealer
-                while (dealerContinue && dealer.getHand().getHandValue() <= 21) {
-                    if (dealer.getHand().getHandValue() < 16) {
-                        deck.deal(dealer);
-                        System.out.println("Dealer took another card.");
-                        System.out.println();
-
-                        //checks if a hand goes over 21 point value, which ends the game
-                        if (dealer.getHand().handOver21()) {
-                            dealer.dealerOver21(player, dealer, dealerBet);
-                            dealerContinue = false;
-                            playerContinue = false;
-                            break;
-                        } else {
-                            //compares dealerBet to hand value and follows criteria in dealerBet method to increase bet or not
-                            dealerBet = dealer.dealerAddToBet(dealer, dealerBet);
-                        }
-                    } else {
-                        dealerContinue = false;
-                        System.out.println("Dealer did not take another card.");
-                    }
-                }
-            }
-            // determine which person has the highest value hand and wins
-            if (!player.getHand().handOver21() && !dealer.getHand().handOver21()) {
-                // if dealer wins
-                if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
-                    dealer.dealerWin(player, dealer, playerBet);
-                //if player wins
                 } else {
-                    player.playerWin(player, dealer, dealerBet);
+                    player.continuePlay = false;
                 }
             }
+            if (dealer.getHand().getHandValue() < 16) {
+                deck.deal(dealer);
+                System.out.println("Dealer took another card.");
+                System.out.println();
+
+                //checks if a hand goes over 21 point value, which ends the game
+                if (dealer.getHand().handOver21()) {
+                    dealer.checkOver21(player, dealer, playerBet, dealerBet);
+                    break;
+                } else {
+                    //compares dealerBet to hand value and follows criteria in dealerBet method to increase bet or not
+                    dealerBet = dealer.dealerAddToBet(dealer, dealerBet);
+                }
+            } else {
+                dealer.continuePlay = false;
+                System.out.println("Dealer did not take another card.");
+            }
+        }
+        // determine which person has the highest value hand and wins
+        if (!player.getHand().handOver21() && !dealer.getHand().handOver21()) {
+            // if dealer wins
+            if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
+                dealer.dealerWin(player, dealer, playerBet);
+                //if player wins
+            } else {
+                player.playerWin(player, dealer, dealerBet);
+            }
+        }
         checkForBroke(player, dealer);
     }
 

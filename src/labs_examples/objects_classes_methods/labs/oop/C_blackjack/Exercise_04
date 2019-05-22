@@ -80,3 +80,4 @@ The dealer went over 21! You win the hand!
 
  -checkBet - it's working ok but not returning the playerBet, or, the playerBet variable isn't getting updated to the
  new bet like it should
+ -fixed!
