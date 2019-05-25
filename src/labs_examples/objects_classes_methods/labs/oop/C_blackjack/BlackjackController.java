@@ -117,6 +117,9 @@ public class BlackjackController {
         //calling method to clear each player's cards array that makes up their hand
         player.getHand().clearHand();
         dealer.getHand().clearHand();
+
+        player.setContinuePlay(true);
+        dealer.setContinuePlay(true);
     }
 
     private void checkForBroke(Player player, Player dealer) {

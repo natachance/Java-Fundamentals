@@ -103,16 +103,19 @@ public class Player {
 
     public int playerAddToBet(Player player, int playerBet) {
         Scanner scanner = new Scanner(System.in);
+        int temp = playerBet;
 
         System.out.println("Would you like to add to your bet?");
         String betResponse = scanner.next();
 
         if (betResponse.equalsIgnoreCase("Y")) {
-            System.out.println("How much?");
-            playerBet += scanner.nextInt();
-
-            //requires lower bet if player bets more than in current pot
-            player.checkBet(player, playerBet);
+            player.playerBet(player);
+//            System.out.println("How much?");
+//            playerBet = scanner.nextInt();
+//
+//            //requires lower bet if player bets more than in current pot
+//            player.checkBet(player, playerBet);
+//            playerBet += temp;
 
             System.out.println("Your total bet is: $" + playerBet + ".");
             System.out.println();
@@ -125,7 +128,7 @@ public class Player {
 
     public int dealerAddToBet(Player dealer, int dealerBet) {
         int temp = dealerBet;
-        if (dealer.getPotValue() <= dealerBet) {
+        if (dealer.getPotValue() >= dealerBet) {
             dealerBet += dealer.dealerBet(dealer.getPotValue());
 
             if (temp < dealerBet) {

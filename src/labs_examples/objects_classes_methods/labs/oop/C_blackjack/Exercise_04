@@ -81,3 +81,12 @@ The dealer went over 21! You win the hand!
  -checkBet - it's working ok but not returning the playerBet, or, the playerBet variable isn't getting updated to the
  new bet like it should
  -fixed!
+
+ -on second hand, didn't ask if I wanted another card, just ended game
+ -realized player.continuePlay was still set to false
+ -added to resetGame method to set player and dealer.continuePlay back to true
+
+ -when checkBet method is called, it reads input and gives message that pot isn't enough, but still holds original number
+ as value (example betting 100 with previous bet of 20, says enter lower, but still adds 100 so total bet of 120)
+ -changed logic in playerAddToBet method to add scanner input only after checkBet method is called (to include udpated bet)
+ -issue may lie with not subtracting bets from pot value immediately?
