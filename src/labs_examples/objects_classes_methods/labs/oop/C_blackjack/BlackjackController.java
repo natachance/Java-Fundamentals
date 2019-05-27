@@ -28,11 +28,8 @@ public class BlackjackController {
         deck.initialDeal(player, dealer);
 
         //taking in first player bet and generating first dealer bet
-        int dealerBet = dealer.dealerBet(dealer.getPotValue());
+        int dealerBet = dealer.dealerBet(dealer.getPotValue(), dealer, 0);
         int playerBet = player.playerBet(player);
-
-        //checks whether bet is higher than current pot value, and if so takes in an updated bet
-        playerBet = player.checkBet(player, playerBet);
 
         System.out.println("You have bet $" + playerBet + " and the dealer has bet $" + dealerBet + ".");
         System.out.println();
@@ -85,10 +82,10 @@ public class BlackjackController {
         if (!player.getHand().handOver21() && !dealer.getHand().handOver21()) {
             // if dealer wins
             if (dealer.getHand().getHandValue() > player.getHand().getHandValue()) {
-                dealer.dealerWin(player, dealer, playerBet);
+                dealer.dealerWin(player, dealer, playerBet, dealerBet);
                 //if player wins
             } else {
-                player.playerWin(player, dealer, dealerBet);
+                player.playerWin(player, dealer, dealerBet, playerBet);
             }
         }
         checkForBroke(player, dealer);

@@ -90,3 +90,12 @@ The dealer went over 21! You win the hand!
  as value (example betting 100 with previous bet of 20, says enter lower, but still adds 100 so total bet of 120)
  -changed logic in playerAddToBet method to add scanner input only after checkBet method is called (to include udpated bet)
  -issue may lie with not subtracting bets from pot value immediately?
+ -added logic to subtract bets from potValue in real time, then whoever wins gets own bet plus opponent bet plus current
+ pot value
+
+ -dealer bet is still not right, not subtracting dealer bet somewhere, adding dealer bet and player bet to original total
+ when dealer wins
+
+ -still have issue when dealer raises bet, dealer not getting as much $ as should when dealer wins
+ -tried updating dealerAddToBet method, split out updated bet to subtract (may have been subtracting entire bet)
+ -didn't work

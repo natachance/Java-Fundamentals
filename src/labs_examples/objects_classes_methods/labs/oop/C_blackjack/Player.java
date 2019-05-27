@@ -59,17 +59,19 @@ public class Player {
     }
 
     //method to set dealer bet automatically based on hand value
-    public int dealerBet(int potValue){
-        int dealerBet = 0;
+    public int dealerBet(int potValue, Player dealer, int dealerBet){
         while (dealerBet <= potValue) {
             if (hand.getHandValue() >= 19 && hand.getHandValue() <= 21) {
                 dealerBet = potValue / 2;
+                dealer.setPotValue(dealer.getPotValue() - dealerBet);
                 return dealerBet;
             } else if (hand.getHandValue() >= 14 && hand.getHandValue() <= 18) {
                 dealerBet = potValue / 3;
+                dealer.setPotValue(dealer.getPotValue() - dealerBet);
                 return dealerBet;
             } else if (hand.getHandValue() >= 9 && hand.getHandValue() <= 13) {
                 dealerBet = potValue / 4;
+                dealer.setPotValue(dealer.getPotValue() - dealerBet);
                 return dealerBet;
             } else {
                 dealerBet = 0;
@@ -98,38 +100,36 @@ public class Player {
         //checks whether bet is higher than current pot value, and if so takes in an updated bet
         int updatedPlayerBet = player.checkBet(player, playerBet);
 
+        player.setPotValue(player.getPotValue() - updatedPlayerBet);
+
         return updatedPlayerBet;
     }
 
     public int playerAddToBet(Player player, int playerBet) {
         Scanner scanner = new Scanner(System.in);
-        int temp = playerBet;
 
         System.out.println("Would you like to add to your bet?");
         String betResponse = scanner.next();
+        int updatedPlayerBet;
 
         if (betResponse.equalsIgnoreCase("Y")) {
-            player.playerBet(player);
-//            System.out.println("How much?");
-//            playerBet = scanner.nextInt();
-//
-//            //requires lower bet if player bets more than in current pot
-//            player.checkBet(player, playerBet);
-//            playerBet += temp;
+           updatedPlayerBet = player.playerBet(player) + playerBet;
 
-            System.out.println("Your total bet is: $" + playerBet + ".");
+            System.out.println("Your total bet is: $" + updatedPlayerBet + ".");
             System.out.println();
         } else {
             System.out.println("Ok, your bet remains: $" + playerBet + ".");
             System.out.println();
+            updatedPlayerBet = playerBet;
         }
-        return playerBet;
+        return updatedPlayerBet;
     }
 
     public int dealerAddToBet(Player dealer, int dealerBet) {
         int temp = dealerBet;
         if (dealer.getPotValue() >= dealerBet) {
-            dealerBet += dealer.dealerBet(dealer.getPotValue());
+            int updatedDealerBet = dealer.dealerBet(dealer.getPotValue(), dealer, dealerBet);
+            dealerBet += updatedDealerBet;
 
             if (temp < dealerBet) {
                 System.out.println("Dealer has raised bet to: $" + dealerBet + ".");
@@ -143,7 +143,7 @@ public class Player {
     }
 
     //method to show dealer hand, declare point values for dealer and player, and add player bet to dealer pot when dealer wins
-    public void dealerWin(Player player, Player dealer, int playerBet){
+    public void dealerWin(Player player, Player dealer, int playerBet, int dealerBet){
         System.out.println();
         System.out.println("Dealer's cards:");
         dealer.printHand(true);
@@ -154,15 +154,14 @@ public class Player {
         System.out.println();
 
         //add player's bet to dealer's pot
-        dealer.setPotValue(dealer.getPotValue() + playerBet);
-        player.setPotValue(player.getPotValue() - playerBet);
+        dealer.setPotValue(dealer.getPotValue() + playerBet + dealerBet);
         System.out.println("The dealer now has $" + dealer.getPotValue() + " and you have $" +
                 player.getPotValue() + ".");
         System.out.println("-----------------------------------");
     }
 
     //method to show dealer hand, declare point values for dealer and player, and add dealer bet to player pot when player wins
-    public void playerWin(Player player, Player dealer, int dealerBet){
+    public void playerWin(Player player, Player dealer, int dealerBet, int playerBet){
         System.out.println();
         System.out.println("Dealer's cards:");
         dealer.printHand(true);
@@ -173,8 +172,7 @@ public class Player {
         System.out.println();
 
         //add dealer's bet to player's pot
-        player.setPotValue(dealerBet + player.getPotValue());
-        dealer.setPotValue(dealer.getPotValue() - dealerBet);
+        player.setPotValue(dealerBet + playerBet + player.getPotValue());
         System.out.println("You now have $" + player.getPotValue() + " and the dealer has $" +
                 dealer.getPotValue() + ".");
         System.out.println("-----------------------------------");
@@ -184,10 +182,10 @@ public class Player {
         System.out.println();
         if (player.getHand().handOver21()) {
             System.out.println("You've gone over 21!");
-            dealer.dealerWin(player, dealer, playerBet);
+            dealer.dealerWin(player, dealer, playerBet, dealerBet);
         } else if (dealer.getHand().handOver21()){
             System.out.println("The dealer went over 21!");
-            player.playerWin(player, dealer, dealerBet);
+            player.playerWin(player, dealer, dealerBet, playerBet);
         } else return;
 
         System.out.println("-----------------------------------");
