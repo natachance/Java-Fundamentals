@@ -1,6 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.C_blackjack;
 
 public class Card {
+    //variables for each attribute of a card
     private char suit;
     private int faceValue;
     private int pointValue;

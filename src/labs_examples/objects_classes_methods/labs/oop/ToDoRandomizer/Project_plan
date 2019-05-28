@@ -68,7 +68,7 @@ Logic for this option:
             1. mark this task complete
                 -moves task to ArrayList of completed tasks
                 -returns user to main menu
-            2. select a different tasktask
+            2. select a different task
                 -repeat steps from beginning of Option 1 above
             3. return to main menu
 

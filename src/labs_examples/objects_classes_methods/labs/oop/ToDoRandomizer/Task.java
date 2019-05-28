@@ -2,7 +2,6 @@ package labs_examples.objects_classes_methods.labs.oop.ToDoRandomizer;
 
 public class Task {
     String title;
-    int number;
 
     public Task() {}
 
@@ -12,5 +11,10 @@ public class Task {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return title + '\'';
     }
 }
