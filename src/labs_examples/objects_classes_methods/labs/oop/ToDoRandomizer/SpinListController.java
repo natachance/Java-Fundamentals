@@ -44,6 +44,9 @@ public class SpinListController {
     }
 
     private void inputTask() {
+        Task task = new Task();
+        task.setTitle(scanner.next());
+        taskList.add(task);
     }
 
     private void completeTask() {
@@ -55,7 +58,6 @@ public class SpinListController {
         "When you've finished, type 'done' and hit enter.");
 
         ArrayList<Task> taskList = new ArrayList<>();
-
         boolean addingTasks = true;
         while (addingTasks) {
             Task task = new Task();
@@ -65,6 +67,7 @@ public class SpinListController {
                 break;
             }
         }
+
         TaskList newTaskList = new TaskList(taskList);
         return newTaskList;
     }
