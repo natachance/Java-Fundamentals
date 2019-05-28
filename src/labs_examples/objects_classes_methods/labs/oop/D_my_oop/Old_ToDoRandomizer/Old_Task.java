@@ -1,22 +1,22 @@
-package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
+package labs_examples.objects_classes_methods.labs.oop.D_my_oop.Old_ToDoRandomizer;
 
 import java.util.Date;
 
-public class Task {
+public class Old_Task {
 
     private String title;
     private Date creationDate;
     private Date dueDate;
     private String category;
 
-    public Task(String title, Date creationDate, Date dueDate, String category) {
+    public Old_Task(String title, Date creationDate, Date dueDate, String category) {
         this.title = title;
         this.creationDate = creationDate;
         this.dueDate = dueDate;
         this.category = category;
     }
 
-    public Task(){};
+    public Old_Task(){};
 
     public String getTitle() {
         return title;
@@ -52,7 +52,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task{" +
+        return "Old_Task{" +
                 "title='" + title + '\'' +
                 ", creationDate=" + creationDate +
                 ", dueDate=" + dueDate +

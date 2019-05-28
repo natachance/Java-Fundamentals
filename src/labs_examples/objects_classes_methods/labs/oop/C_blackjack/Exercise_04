@@ -99,3 +99,5 @@ The dealer went over 21! You win the hand!
  -still have issue when dealer raises bet, dealer not getting as much $ as should when dealer wins
  -tried updating dealerAddToBet method, split out updated bet to subtract (may have been subtracting entire bet)
  -didn't work
+ -found redundancy in dealerAddToBet subtracting what was already subtracted in dealerBet method (which is called as part
+ of dealerAddToBet)

@@ -108,7 +108,7 @@ public class BlackjackController {
     }
 
     private void resetGame(Deck deck, Player player, Player dealer) {
-        //calling method to clear usedCards Array TaskList
+        //calling method to clear usedCards Array Old_TaskList
         deck.shuffleDeck();
 
         //calling method to clear each player's cards array that makes up their hand

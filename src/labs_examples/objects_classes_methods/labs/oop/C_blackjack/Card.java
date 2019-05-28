@@ -10,7 +10,6 @@ public class Card {
     public Card(char suit, int faceValue) {
         this.suit = suit;
         this.faceValue = faceValue;
-//        this.cardName.nameCard(faceValue) = cardName; //not sure how to call nameCard method below to get cardName
 
         //accounts for face cards by assigning them all values of 10, while maintaining their number identifier
         if (faceValue > 10){

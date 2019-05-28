@@ -1,17 +1,17 @@
-package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
+package labs_examples.objects_classes_methods.labs.oop.D_my_oop.Old_ToDoRandomizer;
 
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TaskListController {
+public class Old_TaskListController {
 
     Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        TaskListController taskListController = new TaskListController();
+        Old_TaskListController oldTaskListController = new Old_TaskListController();
         System.out.println("Welcome to SpinList!");
-        taskListController.runToDoApp();
+        oldTaskListController.runToDoApp();
     }
 
     public void runToDoApp(){
@@ -51,19 +51,19 @@ public class TaskListController {
     private void viewCompletedTasks() {
     }
 
-    public TaskList initializeTaskList() {
+    public Old_TaskList initializeTaskList() {
 
         System.out.println("Please enter a list category.");
         String category = scanner.next();
 
-        ArrayList<Task> taskList = new ArrayList<>();
+        ArrayList<Old_Task> taskList = new ArrayList<>();
 
         System.out.println("Great, let's get started! Please enter your tasks for this list, hitting enter after each one. " +
                 "When you've finished, type 'done' and hit enter.");
 
         boolean addingTasks = true;
         while (addingTasks) {
-            Task t = new Task();
+            Old_Task t = new Old_Task();
             t.setTitle(scanner.next());
             taskList.add(t);
             if (scanner.next().equalsIgnoreCase("done")) {
@@ -71,7 +71,7 @@ public class TaskListController {
             }
         }
 
-//        TaskList newTaskList = new TaskList(taskList, category);
+//        Old_TaskList newTaskList = new Old_TaskList(taskList, category);
         return null;
     }
 }

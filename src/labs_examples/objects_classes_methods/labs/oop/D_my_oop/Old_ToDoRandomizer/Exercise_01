@@ -11,24 +11,24 @@ Imagine it, design it, build it, test it. Have some fun. Reach out anytime you'r
 
 
 To-do list randomizer app
-helps with decision fatigue and low motivation by randomly assigning you a task from a list you've input
+helps with decision fatigue and low motivation by randomly assigning you a title from a list you've input
 
 User inputs Strings of to-do items, these Strings populate an Array List
 
 Ask user to enter another item, or if done, type "done" (if ignorecase then move on)
 
-Then ask "Ready to complete a task? y/n"
+Then ask "Ready to complete a title? y/n"
 
 if Y - randomly choose a String from Array List
-"Your task is x"
+"Your title is x"
 
-When you've finished your task, type "done"
-Or to choose a different task, type "next"
+When you've finished your title, type "done"
+Or to choose a different title, type "next"
 
 if done, move to completedTasks Array List.
-if next, leave in place and choose another random task.
+if next, leave in place and choose another random title.
 
-Then loop back to "Ready to complete a task? y/n"
+Then loop back to "Ready to complete a title? y/n"
 
 
 Next level: multiple Array Lists for different categories of tasks.

@@ -29,7 +29,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "Old_Category{" +
                 "age=" + age +
                 ", height=" + height +
                 ", name='" + name + '\'' +

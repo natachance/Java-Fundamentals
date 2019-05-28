@@ -1,11 +1,11 @@
-package labs_examples.objects_classes_methods.labs.oop.D_my_oop;
+package labs_examples.objects_classes_methods.labs.oop.D_my_oop.Old_ToDoRandomizer;
 
 import java.util.ArrayList;
 
-public class Category {
+public class Old_Category {
     private String categoryName;
 
-    public Category(String name) {
+    public Old_Category(String name) {
         this.categoryName = name;
     }
 
