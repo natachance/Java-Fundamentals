@@ -29,24 +29,36 @@ public class TaskList {
         this.completedTasks = completedTasks;
     }
 
-    //can't call this method in controller - no idea why
-//        private void addingTasks() {
-//        boolean addingTasks = true;
-//        while (addingTasks) {
-//            Task task = new Task();
-//            task.setTitle(scanner.next());
-//            tasks.add(task);
-//            if (scanner.next().equalsIgnoreCase("done")) {
-//                break;
-//            }
-//        }
-//    }
+    public void addingTasks() {
+        System.out.println("Please enter your tasks, hitting enter after each one. " +
+                "When you've finished, type 'Done' and hit enter.");
+        boolean addingTasks = true;
+        while (addingTasks) {
+            Task task = new Task();
+            task.setTitle(scanner.next());
+            tasks.add(task);
+            if (scanner.next().equalsIgnoreCase("done")) {
+                break;
+            }
+        }
+    }
 
     public void presentTask() {
         int value;
         Random r = new Random();
         value = r.nextInt((tasks.size() - 0) + 1) + 0;
         System.out.println(tasks.indexOf(value)); //how to print? returning "-1" right now
+    }
+
+    //marking a task complete by moving to the completedTasks ArrayList
+    public void completeTask(){
+        System.out.println("Please select the task you would like to mark complete and hit enter.");
+        for(Task t : tasks){
+            System.out.println(t.toString());
+        }
+        //how to number each task? Index in ArrayList? How does this work?
+
+//        completedTasks.add(Scanner.next());
     }
 }
 
