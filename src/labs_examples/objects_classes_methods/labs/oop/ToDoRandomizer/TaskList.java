@@ -29,6 +29,7 @@ public class TaskList {
         this.completedTasks = completedTasks;
     }
 
+    //adding tasks to the TaskList ArrayList
     public void addingTasks() {
         System.out.println("Please enter your tasks, hitting enter after each one. " +
                 "When you've finished, type 'Done' and hit enter.");
@@ -43,6 +44,7 @@ public class TaskList {
         }
     }
 
+    //selecting and printing a random task from the ArrayList of tasks
     public void presentTask() {
         int value;
         Random r = new Random();
