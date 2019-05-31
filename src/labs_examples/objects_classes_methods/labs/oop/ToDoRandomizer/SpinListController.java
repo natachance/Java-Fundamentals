@@ -28,10 +28,13 @@ public class SpinListController {
 
         if (response == 1) {
             taskList.presentTask();
+            mainMenu(taskList);
         } else if (response == 2) {
             taskList.addingTasks();
+            mainMenu(taskList);
         } else if (response == 3) {
             taskList.completeTask();
+            mainMenu(taskList);
         } else {
             //allowing for entry error and reprinting menu with options
             System.out.println("Please enter a number from the menu list.");
