@@ -1,6 +1,5 @@
 package labs_examples.objects_classes_methods.labs.oop.ToDoRandomizer;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -39,9 +38,9 @@ public class TaskList {
         while (addingTasks) {
             Task task = new Task();
             task.setTitle(scanner.nextLine());
-            task.setIdNumber(task.getLastIdNumber() + 1);//all tasks are being assigned idNumber of 1
+//            task.setIdNumber(tasks.indexOf(task) + 1);//all tasks are being assigned idNumber of 1
             tasks.add(task);
-            if (scanner.next().equalsIgnoreCase("x")) { //sometimes have to type "Done" twice?, x working better
+            if (scanner.next().equalsIgnoreCase("x")) { //sometimes have to type x twice?
                 break;
             }
         }
@@ -50,32 +49,42 @@ public class TaskList {
     //selecting and printing a random task from the ArrayList of tasks
     public void presentTask() {
         int value;
-        do {
             Random r = new Random();
             value = r.nextInt((tasks.size() - 0) + 1); //don't really understand Random and bound
-        } while (completedTasks.contains(value));
 
-        System.out.println(tasks.indexOf(value)); //how to print? returning "-1" right now
+        for(Task t : tasks){
+            if (tasks.indexOf(t) == value){
+                System.out.println(t.toString());
+                System.out.println();
+            }
+        }
     }
 
-    //marking a task complete by moving to the completedTasks ArrayList
+    //marking a task complete
     public void completeTask(){
-            for(Task t : tasks){
-                if(completedTasks.contains(t)) {
-                    continue;
-                } else if (tasks.isEmpty()) {
+        //displaying all tasks, if any, and prompting user to choose a task to mark complete
+        System.out.println("Please type in the number of the task you would like to mark complete and hit enter.");
+        for(Task t : tasks) {
+            if (tasks.isEmpty()) {
+                    System.out.println("You have no tasks to complete!");
                     return;
                 } else {
-                    System.out.println("Please type in the number of the task you would like to mark complete and hit enter.");
-                    //above text is printing over and over again above each task, need to move elsewhere or limit somehow
-                    System.out.println(t.toString()); //first task prints fine, all others the first word is cut off
+                    if (completedTasks.contains(t)) {
+                        continue;
+                    } else {
+//                        System.out.println(t.toString()); not sure how to print index here
+                        System.out.println((tasks.indexOf(t) + 1) + ". " + t.toString());
+                        //first task in list prints fine, all others the first word is cut off
+                    }
                 }
             }
+//this entire block of code below is getting skipped, just returning to main menu when a number is entered
 
+       // marking a task complete by moving to the completedTasks ArrayList, and removing from tasks ArrayList
         int selection = scanner.nextInt();
 
         for(Task t : tasks){
-            if(t.getIdNumber() == selection){
+            if((tasks.indexOf(t) - 1) == selection){
                 completedTasks.add(t);
                 tasksToRemove.add(t);
                 System.out.println("Ok, '" + t.getTitle() + "' is marked complete.");

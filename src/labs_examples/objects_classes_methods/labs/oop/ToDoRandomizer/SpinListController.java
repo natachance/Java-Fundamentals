@@ -10,11 +10,7 @@ public class SpinListController {
     public static void main(String[] args) {
         SpinListController run = new SpinListController();
         TaskList taskList = run.initializeTaskList();
-        run.runSpinList(taskList);
-    }
-
-    private void runSpinList(TaskList taskList) {
-            mainMenu(taskList);
+        run.mainMenu(taskList);
     }
 
     //main menu options
