@@ -17,7 +17,7 @@ public class SpinListController {
     private void mainMenu(TaskList taskList) {
         System.out.println("Main Menu: please type the number of your selection and hit enter");
         System.out.println("1. randomly present a task to complete");
-        System.out.println("2. input new tasks");
+        System.out.println("2. add new tasks");
         System.out.println("3. mark an existing task complete");
 
         int response = scanner.nextInt();
@@ -32,14 +32,15 @@ public class SpinListController {
             taskList.completeTask();
             mainMenu(taskList);
         } else {
-            //allowing for entry error and reprinting menu with options
+
+            //allowing for entry error - reprints menu with options
             System.out.println("Please enter a number from the menu list.");
             System.out.println();
             mainMenu(taskList);
         }
     }
 
-    //initial setup of populating tasks into the TaskList (an Array List of Tasks)
+    //initial setup to populate tasks into a TaskList object (an ArrayList of Tasks)
     private TaskList initializeTaskList() {
         System.out.println("Welcome to SpinList!");
 
