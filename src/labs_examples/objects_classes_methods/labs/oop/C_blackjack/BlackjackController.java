@@ -107,7 +107,7 @@ public class BlackjackController {
         return player;
     }
 
-    private void resetGame(Deck deck, Player player, Player dealer) {
+    private static void resetGame(Deck deck, Player player, Player dealer) {
         //calling method to clear usedCards Array Old_TaskList
         deck.shuffleDeck();
 
@@ -119,7 +119,7 @@ public class BlackjackController {
         dealer.setContinuePlay(true);
     }
 
-    private void checkForBroke(Player player, Player dealer) {
+    private static void checkForBroke(Player player, Player dealer) {
         if (player.getPotValue() == 0) {
             System.out.println("You ran out of money! The dealer wins.");
             System.out.println();

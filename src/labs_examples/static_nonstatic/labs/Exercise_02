@@ -1,3 +1,5 @@
 
 Now that we understand the mechanics and concepts of static and non-static methods and variables please go back to your
 Blackjack and ...
+
+-made 2 methods in controller class static: resetGame() and checkForBroke()
