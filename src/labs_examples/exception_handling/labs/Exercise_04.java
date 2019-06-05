@@ -7,17 +7,25 @@ package labs_examples.exception_handling.labs;
 
 public class Exercise_04 {
     public static void main(String[] args) {
-        int a;
-        int b;
+        demoMethodThree(6, 2);
+        System.out.println();
 
+        demoMethodThree(2, 3);
+        System.out.println();
+    }
+
+    public static void demoMethodThree(int a, int b){
+        int[] nums = {3, 6, 9, 0};
         try {
-            int x = Math.floorDiv(a, b);
+            int x = nums[a];
             System.out.println(x);
-        } catch (ArithmeticException e) {
-            System.out.println("Error: can't divide by 0.");
-
+        } catch (ArrayIndexOutOfBoundsException exc1) {
+            System.out.println("The index entered does not exist in this array.");
             try {
-
+                int y = nums [b] / 0;
+                System.out.println(y);
+            } catch (ArithmeticException exc2) {
+                System.out.println("Error: can't divide by 0.");
             }
         }
     }
