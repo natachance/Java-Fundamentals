@@ -7,5 +7,7 @@ public class Bus {
 
     public Bus() {}
 
-
+    public ArrayList<BusRider> getPassengers() {
+        return passengers;
+    }
 }
