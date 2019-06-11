@@ -50,7 +50,6 @@ public class TaskList {
         }
     }
 
-    //this method doesn't always work
     //selecting and printing a random task from the ArrayList of tasks
     public void presentTask() {
         if (checkForTasks()) {
@@ -58,7 +57,7 @@ public class TaskList {
         } else {
             int value;
             Random r = new Random();
-            value = r.nextInt((tasks.size() - 0) + 1); //don't really understand Random and bound
+            value = r.nextInt((tasks.size() - 0) + 1);
 
             for (Task t : tasks) {
                 if (tasks.indexOf(t) == value) {
@@ -78,11 +77,7 @@ public class TaskList {
 
             //printing all tasks to allow user selection
             for (Task t : tasks) {
-                if (completedTasks.contains(t)) {
-                    continue;
-                } else {
-                    System.out.println((tasks.indexOf(t) + 1) + ". " + t.toString());
-                }
+                System.out.println((tasks.indexOf(t) + 1) + ". " + t.toString());
             }
 
             // marking a task complete by moving to the completedTasks ArrayList
@@ -90,15 +85,17 @@ public class TaskList {
 
             for (Task t : tasks) {
                 if ((tasks.indexOf(t) + 1) == selection) {
-                    completedTasks.add(t);
-                    tasksToRemove.add(t);
+//                    completedTasks.add(t);
+//                    tasksToRemove.add(t);
                     System.out.println("Ok, '" + t.getTitle() + "' is marked complete.");
                     System.out.println();
                 }
             }
 
+            tasks.remove(selection - 1);
+
             //removing completed task from tasks ArrayList
-            tasks.removeAll(tasksToRemove);
+//            tasks.removeAll(tasksToRemove);
         }
     }
 
