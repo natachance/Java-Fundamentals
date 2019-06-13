@@ -54,22 +54,25 @@ public class TaskList {
 
     //selecting and printing a random task from the ArrayList of tasks
     public void presentTask() {
-        if (checkForTasks()) {
-            return;
-        } else {
+        while (checkForTasks() == false) {
             int value;
             Random r = new Random();
             value = r.nextInt((tasks.size() - 0) + 1);
 
             for (Task t : tasks) {
-                if (tasks.indexOf(t) == value) {
-                    System.out.println("Your task is: " + t.toString());
-                    System.out.println();
+                 if (tasks.indexOf(t) == value) {
+                     if (t.getTitle().isEmpty()){
+                         continue;
+                     } else {
+                         System.out.println("Your task is: " + t.toString());
+                         System.out.println();
+                         return;
+                     }
                 }
-//                else if (t.getTitle().isEmpty()){
-//                    continue;
-//                }
             }
+        }
+        if(checkForTasks()){
+            return;
         }
     }
 
@@ -90,17 +93,13 @@ public class TaskList {
 
             for (Task t : tasks) {
                 if ((tasks.indexOf(t) + 1) == selection) {
-//                    completedTasks.add(t);
-//                    tasksToRemove.add(t);
+                    completedTasks.add(t);
                     System.out.println("Ok, '" + t.getTitle() + "' is marked complete.");
                     System.out.println();
                 }
             }
-
-            tasks.remove(selection - 1);
-
             //removing completed task from tasks ArrayList
-//            tasks.removeAll(tasksToRemove);
+            tasks.remove(selection - 1);
         }
     }
 
