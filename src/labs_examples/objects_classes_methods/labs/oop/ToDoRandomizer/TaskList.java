@@ -43,9 +43,11 @@ public class TaskList {
 
             if (title.equalsIgnoreCase("x")) {
                 break;
+            } else if (title.isEmpty()) {
+                continue;
             } else {
-            task.setTitle(title);
-            tasks.add(task);
+                task.setTitle(title);
+                tasks.add(task);
             }
         }
     }
@@ -64,6 +66,9 @@ public class TaskList {
                     System.out.println("Your task is: " + t.toString());
                     System.out.println();
                 }
+//                else if (t.getTitle().isEmpty()){
+//                    continue;
+//                }
             }
         }
     }
