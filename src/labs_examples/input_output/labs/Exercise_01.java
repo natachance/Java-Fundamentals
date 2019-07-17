@@ -16,10 +16,11 @@ import java.io.IOException;
 class Example {
     public static void main(String[] args) {
 
-        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(
-                "src/labs_examples/input_output/files/byte_data"))){
+        String filepath = "src/labs_examples/input_output/files/byte_data";
 
-            byte[] buffer = new byte[5];
+        try (BufferedInputStream bufferedInputStream = new BufferedInputStream(new FileInputStream(filepath))){
+
+            byte[] buffer = new byte[4];
             int bytesRead = 0;
 
             while((bytesRead = bufferedInputStream.read(buffer)) != -1){

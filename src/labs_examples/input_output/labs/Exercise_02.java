@@ -22,19 +22,35 @@ class Exercise_2 {
         String filepath = "src/labs_examples/input_output/files/char_data.txt";
         String newFilepath = "src/labs_examples/input_output/files/encrypted_data.txt";
 
-        try {
-            readWriteCharacters(filepath, newFilepath);
+        readWriteCharacters(filepath, newFilepath);
+        readEncryptedCharacters(newFilepath);
+    }
+
+    private static void readEncryptedCharacters(String newFilepath) {
+        try (FileReader reader = new FileReader(newFilepath)) {
+            int i;
+            char character;
+            while ((i = reader.read()) != -1) {
+                character = decryption((char) i);
+                System.out.print(character);
+            }
         } catch (IOException exc){
             exc.printStackTrace();
         }
     }
 
-    public static void readWriteCharacters (String filepath, String newFilepath) throws IOException {
-        FileReader reader = new FileReader(filepath);
-        FileWriter writer = new FileWriter(newFilepath);
-        int i;
-        while ((i = reader.read()) != -1)
-            writer.write(encryption((char) i));
+    public static void readWriteCharacters (String filepath, String newFilepath) {
+        try (FileReader reader = new FileReader(filepath);
+        FileWriter writer = new FileWriter(newFilepath)) {
+            int i;
+            char character;
+            while ((i = reader.read()) != -1) {
+                character = encryption((char) i);
+                writer.write((int) character);
+            }
+        } catch (IOException exc){
+            exc.printStackTrace();
+        }
     }
 
     public static char encryption (char character){
@@ -119,17 +135,101 @@ class Exercise_2 {
             case 'z':
                 encryptedCharacter = 'a';
                 break;
+            case 'A':
+                encryptedCharacter = 'Z';
+                break;
+            case 'B':
+                encryptedCharacter = 'Y';
+                break;
+            case 'C':
+                encryptedCharacter = 'X';
+                break;
+            case 'D':
+                encryptedCharacter = 'W';
+                break;
+            case 'E':
+                encryptedCharacter = 'V';
+                break;
+            case 'F':
+                encryptedCharacter = 'U';
+                break;
+            case 'G':
+                encryptedCharacter = 'T';
+                break;
+            case 'H':
+                encryptedCharacter = 'S';
+                break;
+            case 'I':
+                encryptedCharacter = 'R';
+                break;
+            case 'J':
+                encryptedCharacter = 'Q';
+                break;
+            case 'K':
+                encryptedCharacter = 'P';
+                break;
+            case 'L':
+                encryptedCharacter = 'O';
+                break;
+            case 'M':
+                encryptedCharacter = 'N';
+                break;
+            case 'N':
+                encryptedCharacter = 'M';
+                break;
+            case 'O':
+                encryptedCharacter = 'L';
+                break;
+            case 'P':
+                encryptedCharacter = 'K';
+                break;
+            case 'Q':
+                encryptedCharacter = 'J';
+                break;
+            case 'R':
+                encryptedCharacter = 'I';
+                break;
+            case 'S':
+                encryptedCharacter = 'H';
+                break;
+            case 'T':
+                encryptedCharacter = 'G';
+                break;
+            case 'U':
+                encryptedCharacter = 'F';
+                break;
+            case 'V':
+                encryptedCharacter = 'E';
+                break;
+            case 'W':
+                encryptedCharacter = 'D';
+                break;
+            case 'X':
+                encryptedCharacter = 'C';
+                break;
+            case 'Y':
+                encryptedCharacter = 'B';
+                break;
+            case 'Z':
+                encryptedCharacter = 'A';
+                break;
             case '.':
                 encryptedCharacter = '-';
                 break;
             case ',':
                 encryptedCharacter = '/';
                 break;
-            case '`':
+            case '’':
                 encryptedCharacter = ',';
                 break;
             case ':':
                 encryptedCharacter = ']';
+                break;
+            case ' ':
+                encryptedCharacter = '+';
+                break;
+            case '\n':
+                encryptedCharacter = '\n';
                 break;
         }
         return encryptedCharacter;
@@ -217,6 +317,84 @@ class Exercise_2 {
             case 'z':
                 decryptedCharacter = 'a';
                 break;
+            case 'A':
+                decryptedCharacter = 'Z';
+                break;
+            case 'B':
+                decryptedCharacter = 'Y';
+                break;
+            case 'C':
+                decryptedCharacter = 'X';
+                break;
+            case 'D':
+                decryptedCharacter = 'W';
+                break;
+            case 'E':
+                decryptedCharacter = 'V';
+                break;
+            case 'F':
+                decryptedCharacter = 'U';
+                break;
+            case 'G':
+                decryptedCharacter = 'T';
+                break;
+            case 'H':
+                decryptedCharacter = 'S';
+                break;
+            case 'I':
+                decryptedCharacter = 'R';
+                break;
+            case 'J':
+                decryptedCharacter = 'Q';
+                break;
+            case 'K':
+                decryptedCharacter = 'P';
+                break;
+            case 'L':
+                decryptedCharacter = 'O';
+                break;
+            case 'M':
+                decryptedCharacter = 'N';
+                break;
+            case 'N':
+                decryptedCharacter = 'M';
+                break;
+            case 'O':
+                decryptedCharacter = 'L';
+                break;
+            case 'P':
+                decryptedCharacter = 'K';
+                break;
+            case 'Q':
+                decryptedCharacter = 'J';
+                break;
+            case 'R':
+                decryptedCharacter = 'I';
+                break;
+            case 'S':
+                decryptedCharacter = 'H';
+                break;
+            case 'T':
+                decryptedCharacter = 'G';
+                break;
+            case 'U':
+                decryptedCharacter = 'F';
+                break;
+            case 'V':
+                decryptedCharacter = 'E';
+                break;
+            case 'W':
+                decryptedCharacter = 'D';
+                break;
+            case 'X':
+                decryptedCharacter = 'C';
+                break;
+            case 'Y':
+                decryptedCharacter = 'B';
+                break;
+            case 'Z':
+                decryptedCharacter = 'A';
+                break;
             case '-':
                 decryptedCharacter = '.';
                 break;
@@ -224,10 +402,16 @@ class Exercise_2 {
                 decryptedCharacter = ',';
                 break;
             case ',':
-                decryptedCharacter = '`';
+                decryptedCharacter = '’';
                 break;
             case ']':
                 decryptedCharacter = ':';
+                break;
+            case '+':
+                decryptedCharacter = ' ';
+                break;
+            case '\n':
+                decryptedCharacter = '\n';
                 break;
         }
         return decryptedCharacter;
