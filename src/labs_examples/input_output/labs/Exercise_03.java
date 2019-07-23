@@ -1,9 +1,6 @@
 package labs_examples.input_output.labs;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Input/Output Exercise 3: variety
@@ -31,14 +28,34 @@ class ByteArrayInputStreamExample {
     }
 }
 
-//class DataInputStreamExample {
-//    public static void main(String[] args) {
-//        String filePath = "src/labs_examples/input_output/files/RWData.dat";
-//
-//        try(DataInputStream input = new DataInputStream(new FileInputStream(filePath)){
-//
-//        } catch(IOException exception){
-//            exception
-//        }
-//    }
-//}
+class DataInputStreamExample {
+    public static void main(String[] args) {
+        String newfilePath = "src/labs_examples/input_output/files/DataInputStreamExampleFile";
+
+        int a = 1;
+        double b = 2.3;
+        char c = 'x';
+
+        try(DataOutputStream output = new DataOutputStream(new FileOutputStream(newfilePath))){
+            output.writeInt(a);
+            output.writeDouble(b);
+            output.writeChar(c);
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
+        try(DataInputStream input = new DataInputStream(new FileInputStream(newfilePath))){
+            a = input.readInt();
+            System.out.println(a);
+
+            b = input.readDouble();
+            System.out.println(b);
+
+            c = input.readChar();
+            System.out.println(c);
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+}
