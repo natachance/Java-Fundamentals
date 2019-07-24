@@ -32,7 +32,7 @@ public class Cars_CSV_Parse {
             bw.write(',');
             bw.write(car.getModel());
             bw.write(',');
-            bw.write(car.getYear(Integer.parseInt()));
+            bw.write(car.getYear());
             bw.write(',');
             bw.write(car.getMiles());
             bw.newLine();
