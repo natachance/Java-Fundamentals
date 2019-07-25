@@ -9,12 +9,13 @@ public class Cars_CSV_Parse {
         ArrayList<Car> cars = new ArrayList<>();
         String filePath = "src/labs_examples/input_output/files/Cars.csv";
         String newFilePath = "src/labs_examples/input_output/files/Cars_Copy.csv";
+        String[] values;
 
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String line;
 
             while((line = br.readLine()) != null){
-                String[] values = line.split(",");
+                values = line.split(",");
                 cars.add(mapValuesToCarObject(values));
             }
         } catch (IOException e){
@@ -32,9 +33,9 @@ public class Cars_CSV_Parse {
             bw.write(',');
             bw.write(car.getModel());
             bw.write(',');
-            bw.write(car.getYear());
+            bw.write(Integer.toString(car.getYear()));
             bw.write(',');
-            bw.write(car.getMiles());
+            bw.write(Integer.toString(car.getMiles()));
             bw.newLine();
         }
             } catch (IOException e){

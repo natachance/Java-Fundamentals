@@ -6,7 +6,7 @@ public class Car {
     int year;
     int miles;
 
-    public Car(){
+    public Car() {
     }
 
     public String getMake() {
