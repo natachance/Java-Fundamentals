@@ -9,7 +9,10 @@ package labs_examples.multi_threading.labs;
 class ThreadsLabTwo {
     public static void main(String[] args) {
         LabTwo example = new LabTwo("Example");
+        example.setPriority(1);
 
+        LabTwo example2 = new LabTwo("Example two");
+        example2.setPriority(Thread.MAX_PRIORITY);
     }
 }
 
