@@ -1,5 +1,7 @@
 package labs_examples.multi_threading.labs;
 
+import java.io.IOException;
+
 /**
  * Multithreading Exercise 5:
  *
@@ -8,24 +10,26 @@ package labs_examples.multi_threading.labs;
 
 class Exercise_05 {
     public static void main(String[] args) {
-    PrintMessages pm = new PrintMessages();
-    pm.printMessages();
+        PrintMessages pm = new PrintMessages();
+        pm.printMessages("This is a message.");
     }
 }
 
 class PrintMessages {
-    public void printMessages(){
-        boolean print = true;
-        while (!print) {
+    boolean print = true;
+    String message;
+
+    public synchronized void printMessages(String message){
+        while (print) {
             try {
-                System.out.println("Printing first message.");
+                System.out.println(message);
                 wait();
-                System.out.println("Printing second message.");
             } catch (InterruptedException ie) {
                 ie.getMessage();
             }
         }
         print = false;
+        this.message = message;
         notify();
     }
 }
