@@ -13,9 +13,11 @@ package labs_examples.multi_threading.labs;
 // once class to be controller with main method
 // NEED TO FIGURE OUT LOGIC - use something like if (x % 2 == 0) for evens, and if (x % 2 != 0) for odds?
 // or counter variable, x + 2?
+// currently only running each method once, not looping around again in spite of for loops w/ counters
 
 class OddEven {
     String state;
+    static int x = 1;
 
     synchronized void odd (boolean running){
         if(!running){
@@ -24,12 +26,11 @@ class OddEven {
             return;
         }
 
-        for(int x = 0; x <100; x++) {
-            System.out.println(x + 1);
-        }
-
+        System.out.println(x);
+        x++;
         state = "odd";
         notify();
+
         try {
             while (!state.equals("even")) {
                 wait();
@@ -46,9 +47,8 @@ class OddEven {
                 return;
             }
 
-            for(int x = 0; x <100; x++) {
-                System.out.println(x + 2);
-            }
+            System.out.println(x);
+            x++;
 
             state = "even";
             notify();
@@ -75,15 +75,13 @@ class CountingThread implements Runnable {
 
     public void run(){
         if(t.getName().compareTo("odd") == 0) {
-            for (int i = 0; i <= 100; i++) {
+            for(int i = 0; i <= 100; i++)
                 oddEven.odd(true);
                 oddEven.odd(false);
-            }
         } else {
-                for (int i = 0; i <= 100; i++){
+                for(int i = 0; i <= 100; i++)
                     oddEven.even(true);
                     oddEven.even(false);
-            }
         }
     }
 }
