@@ -20,7 +20,7 @@ class PrintMessages {
     String message;
 
     public synchronized void printMessages(String message){
-        while (print) {
+        while (!print) {
             try {
                 System.out.println(message);
                 wait();
