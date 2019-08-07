@@ -7,7 +7,7 @@ Any given program costs more and takes longer.
 If a program is useful, it will have to be changed.
 If a program is useless, it will have to be documented.
 Any program will expand to fill available memory.
-The value of a program is proportional to the weight of its output.
+The val1 of a program is proportional to the weight of its output.
 Program complexity grows until it exceeds the capabilities of the programmer who must maintain it.
 Any non-trivial program contains at least one bug.
 Undetectable errors are infinite in variety, in contrast to detectable errors, which by definition are limited.

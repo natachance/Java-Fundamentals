@@ -2,7 +2,7 @@
 In this section we'll be creating a small Object Oriented Application. The various exercises will build on each other.
 
 Let's model a blackjack game! The game we'll be creating will be very simple. It will be "closest to 21". The player
-who's hand value is closest to 21 without going over at the end of the game will win.
+who's hand val1 is closest to 21 without going over at the end of the game will win.
 
 It will not ask for bets. The user and the computer will each start with a small pot and bets will be taken automatically.
 

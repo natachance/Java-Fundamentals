@@ -2,10 +2,10 @@
 Make the BlackJack game we just created better. Add a way for the user and the computer to bet.
 
 Give the user and computer both an initial sum of "money" and let them play with it.
--in player constructor, assign initial value? ($100 per player/dealer)
+-in player constructor, assign initial val1? ($100 per player/dealer)
 
 Take actual bets.
--basically just changing an int for each player and an int for total pot value
+-basically just changing an int for each player and an int for total pot val1
 -potValue += playerBet + dealerBet
 -scanner input in controller method
 -how to manage dealer bets?
@@ -87,11 +87,11 @@ The dealer went over 21! You win the hand!
  -added to resetGame method to set player and dealer.continuePlay back to true
 
  -when checkBet method is called, it reads input and gives message that pot isn't enough, but still holds original number
- as value (example betting 100 with previous bet of 20, says enter lower, but still adds 100 so total bet of 120)
+ as val1 (example betting 100 with previous bet of 20, says enter lower, but still adds 100 so total bet of 120)
  -changed logic in playerAddToBet method to add scanner input only after checkBet method is called (to include udpated bet)
- -issue may lie with not subtracting bets from pot value immediately?
+ -issue may lie with not subtracting bets from pot val1 immediately?
  -added logic to subtract bets from potValue in real time, then whoever wins gets own bet plus opponent bet plus current
- pot value
+ pot val1
 
  -dealer bet is still not right, not subtracting dealer bet somewhere, adding dealer bet and player bet to original total
  when dealer wins
