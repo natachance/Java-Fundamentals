@@ -17,11 +17,11 @@ package labs_examples.generics.labs;
  */
 
 class GenericsExercise3{
-    public static <T extends Number, U extends Number> Double genericSumMethod(T t, U u){
-        Double sum = 0.0;
-        sum = (double) t + (double) u;
-        return sum;
-    }
+//    public static <T extends Number, U extends Number> Double genericSumMethod(T t, U u){
+//        Double sum = 0.0;
+//        sum = (double) t + (double) u;
+//        return sum;
+//    }
 
 
 

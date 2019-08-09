@@ -9,23 +9,12 @@ import java.util.ArrayList;
  *      Numbers in the ArrayList
  */
 
-//class GenericExample2{
-//    public static <E extends Number> E sumArrayList(ArrayList<E> al){
-//        E sum;
-//
-//        for(int i = 0; i < al.size(); i++)
-//            sum += al.get(i);
-//        return sum;
-//    }
-//}
+class GenericExample2{
+    public static <E extends Number> double sumArrayList(ArrayList<E> al){
+        double sum = 0.0;
 
-class Sum{
-    public static int sum(ArrayList<Integer> list){
-        int sum = 0;
-        
-        for(int i = 0; i <list.size(); i++){
-            sum += list.get(i);
-        }
+        for(int i = 0; i < al.size(); i++)
+            sum += al.get(i).doubleValue();
         return sum;
     }
 }
@@ -44,10 +33,8 @@ class GenericsControllerSum{
         list2.add(2.3);
         list2.add(3.4);
 
-//        GenericExample2 ge2 = new GenericExample2();
-//        ge2.sumArrayList(list);
-
-        Sum example2 = new Sum();
-        System.out.println(example2.sum(list));
+        GenericExample2 ge2 = new GenericExample2();
+        System.out.println(ge2.sumArrayList(list));
+        System.out.println(ge2.sumArrayList(list2));
     }
 }
