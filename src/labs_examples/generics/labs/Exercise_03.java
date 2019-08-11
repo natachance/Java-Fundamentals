@@ -23,19 +23,20 @@ class GenericsExercise3Controller{
         GenericsExercise3 ge3 = new GenericsExercise3();
 
         // #1 checking output - sum of two numbers (of any type)
-        System.out.println(ge3.genericSumMethod(1, 2.3));
+        System.out.println("The sum is: " + ge3.genericSumMethod(1, 2.3));
 
         //#2 creating ArrayList to pass in, then checking output
-//        ArrayList<String> palindromes = new ArrayList;
-//        palindromes.add("kayak");
-//        palindromes.add("racecar");
-//        palindromes.add("greyhound");
-//        int numOfPalindromes = ge3.palindromStrings(palindromes);
-//        System.out.println(numOfPalindromes);
+        ArrayList<String> palindromes = new ArrayList();
+        palindromes.add("kayak");
+        palindromes.add("racecar");
+        palindromes.add("greyhound");
+        int numOfPalindromes = ge3.palindromeStrings(palindromes);
+        System.out.println("There are " + numOfPalindromes + " palindromes.");
 
         //#3 creating array to pass in, switching elements in the array, then checking output
         Integer[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         Integer[] updatedTestArray = ge3.switchElements(testArray, 3, 5);
+        System.out.print("The updated array is: ");
         for(int i = 0; i < updatedTestArray.length; i++) {
             System.out.print(updatedTestArray[i]+ " ");
         }
@@ -43,7 +44,7 @@ class GenericsExercise3Controller{
 
         // #4 testing output, return largest element in list
         int x = ge3.findLargest(testArray);
-        System.out.println(x);
+        System.out.println("The largest element is: " + x);
     }
 }
 
@@ -56,20 +57,20 @@ class GenericsExercise3{
     }
 
     //#2 count and return number of palindromes in collection of Strings
-//    public static <E extends Collection> int palindromStrings(E list){
-//        int numberOfStrings = 0;
-//
-//        for(int i = 0; i < list.length(); i++){
-//            String reverse = new StringBuffer(list[i]().reverse().toString();
-//
-//            // check whether the string is palindrome or not
-//            if (list[i].equals(reverse)){
-//                numberOfStrings += 1;
-//            }
-//        }
-//
-//        return numberOfStrings;
-//    }
+    public static <E extends Collection> int palindromeStrings(E list){
+        int numberOfStrings = 0;
+
+        for(int i = 0; i < list.size(); i++){
+            String temp = (String) list.toArray()[i];
+            String reverse = new StringBuffer(temp).reverse().toString();
+
+            // check whether the string is palindrome or not
+            if (temp.equals(reverse)){
+                numberOfStrings += 1;
+            }
+        }
+        return numberOfStrings;
+    }
 
 //    #3 switch positions of 2 elements in an array
     public static <E> E[] switchElements(E[] array, int index1, int index2){
@@ -93,5 +94,4 @@ class GenericsExercise3{
         }
         return max;
     }
-
 }
