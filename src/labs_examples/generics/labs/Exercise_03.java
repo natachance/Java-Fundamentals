@@ -26,7 +26,12 @@ class GenericsExercise3Controller{
         System.out.println(ge3.genericSumMethod(1, 2.3));
 
         //#2 creating ArrayList to pass in, then checking output
-
+//        ArrayList<String> palindromes = new ArrayList;
+//        palindromes.add("kayak");
+//        palindromes.add("racecar");
+//        palindromes.add("greyhound");
+//        int numOfPalindromes = ge3.palindromStrings(palindromes);
+//        System.out.println(numOfPalindromes);
 
         //#3 creating array to pass in, switching elements in the array, then checking output
         Integer[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -34,6 +39,7 @@ class GenericsExercise3Controller{
         for(int i = 0; i < updatedTestArray.length; i++) {
             System.out.print(updatedTestArray[i]+ " ");
         }
+        System.out.println();
 
         // #4 testing output, return largest element in list
         int x = ge3.findLargest(testArray);
@@ -50,13 +56,20 @@ class GenericsExercise3{
     }
 
     //#2 count and return number of palindromes in collection of Strings
-    public static <E extends Collection> int palindromStrings(E list){
-        int numberOfStrings = 0;
-
-
-
-        return numberOfStrings;
-    }
+//    public static <E extends Collection> int palindromStrings(E list){
+//        int numberOfStrings = 0;
+//
+//        for(int i = 0; i < list.length(); i++){
+//            String reverse = new StringBuffer(list[i]().reverse().toString();
+//
+//            // check whether the string is palindrome or not
+//            if (list[i].equals(reverse)){
+//                numberOfStrings += 1;
+//            }
+//        }
+//
+//        return numberOfStrings;
+//    }
 
 //    #3 switch positions of 2 elements in an array
     public static <E> E[] switchElements(E[] array, int index1, int index2){
@@ -69,10 +82,15 @@ class GenericsExercise3{
         return array;
     }
 
-    //#4 return largest element within range of a list
-    public static <E extends Number> E findLargest(E[] array){
-        E max;
+//    #4 return largest element within range of a list
+    public static <E extends Comparable> E findLargest(E[] array){
+        E max = array[0];
 
+        for(int i = 0; i < array.length - 1; i++){
+            if (array[i + 1].compareTo(array[i]) > 0){
+                max = array[i + 1];
+            }
+        }
         return max;
     }
 
