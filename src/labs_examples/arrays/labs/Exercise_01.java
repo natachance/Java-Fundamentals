@@ -41,13 +41,3 @@ public class Exercise_01 {
         System.out.println("The average of the numbers entered is " + average + ".");
     }
 }
-
-class Generic<E>{
-    E[] array;
-
-    public void printArray(E[] array){
-        for(int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
-    }
-}

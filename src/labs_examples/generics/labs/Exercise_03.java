@@ -2,6 +2,7 @@ package labs_examples.generics.labs;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Generics Exercise 3:
@@ -21,7 +22,22 @@ class GenericsExercise3Controller{
     public static void main(String[] args) {
         GenericsExercise3 ge3 = new GenericsExercise3();
 
+        // #1 checking output - sum of two numbers (of any type)
         System.out.println(ge3.genericSumMethod(1, 2.3));
+
+        //#2 creating ArrayList to pass in, then checking output
+
+
+        //#3 creating array to pass in, switching elements in the array, then checking output
+        Integer[] testArray = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        Integer[] updatedTestArray = ge3.switchElements(testArray, 3, 5);
+        for(int i = 0; i < updatedTestArray.length; i++) {
+            System.out.print(updatedTestArray[i]+ " ");
+        }
+
+        // #4 testing output, return largest element in list
+        int x = ge3.findLargest(testArray);
+        System.out.println(x);
     }
 }
 
@@ -42,17 +58,22 @@ class GenericsExercise3{
         return numberOfStrings;
     }
 
-    //#3 switch positions of 2 elements in an array
-//    public static <E> E[] switchElements(E[] array){
-//
-//
-//    }
+//    #3 switch positions of 2 elements in an array
+    public static <E> E[] switchElements(E[] array, int index1, int index2){
+        E temp1 = array[index1];
+        E temp2 = array[index2];
+
+        array[index1] = temp2;
+        array[index2] = temp1;
+
+        return array;
+    }
 
     //#4 return largest element within range of a list
-//    public static <E extends Number> E findLargest(E[] array){
-//        E max;
-//
-////        return max;
-//    }
+    public static <E extends Number> E findLargest(E[] array){
+        E max;
+
+        return max;
+    }
 
 }
