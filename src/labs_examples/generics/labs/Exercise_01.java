@@ -9,11 +9,11 @@ package labs_examples.generics.labs;
  */
 
 
-class GenericsExample<T>{
+class GenericsExample<T, V>{
     private T val1;
-    private T val2;
+    private V val2;
 
-    public GenericsExample(T value, T value2) {
+    public GenericsExample(T value, V value2) {
         this.val1 = value;
         this.val2 = value2;
     }
@@ -26,19 +26,19 @@ class GenericsExample<T>{
         this.val1 = val1;
     }
 
-    public T getVal2() {
+    public V getVal2() {
         return val2;
     }
 
-    public void setVal2(T val2) {
+    public void setVal2(V val2) {
         this.val2 = val2;
     }
 }
 
 class GenericsController{
     public static void main(String[] args) {
-        GenericsExample<Integer> example1 = new GenericsExample(3, 5);
-        GenericsExample<String> example2 = new GenericsExample("horse", "emu");
-        GenericsExample<Double> example3 = new GenericsExample(2.6, 6.78);
+        GenericsExample<Integer, Integer> example1 = new GenericsExample(3, 5);
+        GenericsExample<String, String> example2 = new GenericsExample("horse", "emu");
+        GenericsExample<Double, Double> example3 = new GenericsExample(2.6, 6.78);
     }
 }
